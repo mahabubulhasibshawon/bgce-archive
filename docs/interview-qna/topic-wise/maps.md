@@ -1,14 +1,14 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-19
 **Category:** interview-qa/maps
 **Tags:** [go, maps, data-structure]
 ]
 
-# Maps
+# Maps 
 
-Maps are a data structure which allow us to store data values in key:value pairs.
-A map is an unordered and changeable collection that does not allow duplicates.
-The default value of a map is `nil`.
+**Map** হলো একটি ডেটা স্ট্রাকচার যা `key:value` জোড়ায় ডেটা সংরক্ষণ করতে দেয়।
+Map একটি **unordered** এবং **changeable** collection, যেখানে **duplicate key** রাখা যায় না।
+একটি map-এর default মান হলো `nil`।
 
 ```go
 userInfo := map[string]int{
@@ -26,21 +26,21 @@ fmt.Println(userInfo["john"])
 
 ## Frequently Asked Questions
 
-### 1. How do you create a map in Go?
+---
 
-**Answer:**
-You can create a map using the `make` function or by using a map literal.
+### 1. Go-তে কীভাবে map তৈরি করা যায়?
 
-**Code Example:**
+**উত্তর:**
+`make` ফাংশন অথবা map literal ব্যবহার করে map তৈরি করা যায়।
 
 ```go
-// Using make function
+// make ফাংশন দিয়ে
 userInfo := make(map[string]int)
 userInfo["huxn"] = 17
 userInfo["alex"] = 18
 fmt.Println(userInfo)
 
-// Using map literal
+// map literal দিয়ে
 userInfo := map[string]int{
     "huxn": 17,
     "alex": 18,
@@ -48,12 +48,12 @@ userInfo := map[string]int{
 fmt.Println(userInfo)
 ```
 
-### 2. How do you check if a key exists in a map?
+---
 
-**Answer:**
-You can use the second return value of a map lookup to check if a key exists.
+### 2. কীভাবে map-এ কোনো key আছে কিনা চেক করব?
 
-**Code Example:**
+**উত্তর:**
+map lookup করার সময় দ্বিতীয় রিটার্ন ভ্যালু দিয়ে চেক করা যায় key আছে কিনা।
 
 ```go
 userInfo := map[string]int{
@@ -69,12 +69,12 @@ if exists {
 }
 ```
 
-### 3. How do you delete a key from a map?
+---
 
-**Answer:**
-You can use the `delete` function to remove a key from a map.
+### 3. Go-তে map থেকে কোনো key কীভাবে মুছব?
 
-**Code Example:**
+**উত্তর:**
+`delete` ফাংশন ব্যবহার করে map থেকে key মুছে ফেলা যায়।
 
 ```go
 userInfo := map[string]int{
@@ -85,30 +85,30 @@ delete(userInfo, "huxn")
 fmt.Println(userInfo)
 ```
 
-### 4. Can a map key be of any type?
+---
 
-**Answer:**
-No, map keys must be of a type that is comparable (e.g., strings, integers, etc.).
+### 4. সব ধরনের টাইপ কি map-এর key হতে পারে?
 
-**Code Example:**
+**উত্তর:**
+না, key অবশ্যই এমন টাইপ হতে হবে যেটা **comparable**, যেমন: `string`, `int` ইত্যাদি।
 
 ```go
-// Valid keys
+// বৈধ key
 userInfo := map[string]int{
     "huxn": 17,
     "alex": 18,
 }
 
-// Invalid keys (e.g., slices)
-// userInfo := map[[]int]int{} // This will throw an error
+// অবৈধ key (যেমন slice)
+// userInfo := map[[]int]int{} // এটি error দেবে
 ```
 
-### 5. How do you iterate over a map?
+---
 
-**Answer:**
-You can use a `for` loop with the `range` keyword to iterate over a map.
+### 5. Go-তে map কীভাবে iterate করব?
 
-**Code Example:**
+**উত্তর:**
+`for` লুপ এবং `range` কীওয়ার্ড ব্যবহার করে map-এ loop চালানো যায়।
 
 ```go
 userInfo := map[string]int{
@@ -121,33 +121,33 @@ for key, value := range userInfo {
 }
 ```
 
-### 6. What is the zero value of a map?
+---
 
-**Answer:**
-The zero value of a map is `nil`.
+### 6. map-এর zero value কী?
 
-**Code Example:**
+**উত্তর:**
+map-এর zero value হলো `nil`।
 
 ```go
 var userInfo map[string]int
 fmt.Println(userInfo == nil) // true
 ```
 
-### 7. Can you compare two maps in Go?
+---
 
-**Answer:**
-No, maps cannot be compared directly. You need to compare them manually by iterating over their keys and values.
+### 7. Go-তে দুটি map কী compare করা যায়?
 
-**Code Example:**
+**উত্তর:**
+না, map সরাসরি compare করা যায় না। ম্যানুয়ালি key-value গুলা মিলিয়ে দেখতে হয়।
 
 ```go
 map1 := map[string]int{"huxn": 17, "alex": 18}
 map2 := map[string]int{"huxn": 17, "alex": 18}
 
-// Direct comparison is not allowed
-// fmt.Println(map1 == map2) // This will throw an error
+// সরাসরি তুলনা যাবে না
+// fmt.Println(map1 == map2) // এটি error দেবে
 
-// Manual comparison
+// ম্যানুয়ালি তুলনা
 areEqual := true
 for key, value := range map1 {
     if map2[key] != value {
@@ -158,12 +158,12 @@ for key, value := range map1 {
 fmt.Println("Maps are equal:", areEqual)
 ```
 
-### 8. How do you find the length of a map?
+---
 
-**Answer:**
-You can use the `len` function to find the number of key-value pairs in a map.
+### 8. map-এর দৈর্ঘ্য (length) কীভাবে বের করব?
 
-**Code Example:**
+**উত্তর:**
+`len` ফাংশন ব্যবহার করে map-এর key-value count জানা যায়।
 
 ```go
 userInfo := map[string]int{
@@ -173,12 +173,12 @@ userInfo := map[string]int{
 fmt.Println("Length of map:", len(userInfo))
 ```
 
-### 9. Can you nest maps in Go?
+---
 
-**Answer:**
-Yes, you can create a map where the value is another map.
+### 9. Go-তে কী nested map তৈরি করা যায়?
 
-**Code Example:**
+**উত্তর:**
+হ্যাঁ, map-এর value হিসেবে আরেকটি map রাখা যায়।
 
 ```go
 nestedMap := map[string]map[string]int{
@@ -193,12 +193,12 @@ nestedMap := map[string]map[string]int{
 fmt.Println(nestedMap)
 ```
 
-### 10. How do you copy a map in Go?
+---
 
-**Answer:**
-You need to manually copy the key-value pairs from one map to another.
+### 10. Go-তে map কপি কীভাবে করব?
 
-**Code Example:**
+**উত্তর:**
+একটি map থেকে আরেকটিতে key-value গুলো ম্যানুয়ালি কপি করতে হয়।
 
 ```go
 originalMap := map[string]int{

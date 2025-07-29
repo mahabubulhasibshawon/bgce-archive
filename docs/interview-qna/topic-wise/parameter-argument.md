@@ -1,18 +1,19 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-22
 **Category:** interview-qa/Argument vs Parameter
 **Tags:** [go, Parameter, Argument]
 ]
 
-## Difference between Parameter and Argument
+
+## Parameter এবং Argument এর মধ্যে পার্থক্য
 
 ### Parameter
 
-A **parameter** is a variable in the declaration of a function. It defines what kind of input a function will accept when it is called. It acts as a placeholder for the values that will be passed into the function.
+**Parameter** হলো একটি ভেরিয়েবল in the declaration of a **function**. এটি নির্ধারণ করে কী ধরনের ইনপুট একটি **function** গ্রহণ করবে যখন এটি কল করা হবে। এটি একটি placeholder যা সেই মানগুলোর জন্য ব্যবহৃত হয় যা **function**-এ পাঠানো হবে।
 
 ### Argument
 
-An **argument** is the actual value that is passed into the function when it is called. Arguments correspond to the parameters defined in the function signature. These are the real values provided to the function when executing the code.
+**Argument** হলো বাস্তব value যা পাঠানো হয় একটি **function**‑এ যখন এটি কল করা হয়। **Arguments** সেই parameters-এর সাথে মিলে যায় যা **function signature**‑এ ডিফাইন করা থাকে। এই গুলো হলো সেই আসল মান যা **function**‑কে execution সময় প্রদান করা হয়।
 
 ### Example Code
 
@@ -33,34 +34,34 @@ func main() {
 }
 ```
 
-In the above example:
+উপরের example‑এ:
 
-- `a` and `b` are **parameters** of the `add` function.
-- `5` and `3` are **arguments** passed to the `add` function when it is called in the `main` function.
+* `a` ও `b` হল **parameters** of the `add` **function**
+* `5` ও `3` হল **arguments** যা **add** **function**‑এ pass করা হয় যখন এটি `main` **function**‑এ call করা হয়।
 
 ---
 
 ### Further Explanation
 
-**Parameters** are declared within the function's signature. They provide the function with input values that can be used within the function's body.
+**Parameters** ডিক্লেয়ার করা হয় **function’s signature**‑এর মধ্যে। এগুলো **function**‑কে input values প্রদান করে যা **function’s body**‑এর মধ্যে ব্যবহার করা হয়।
 
-**Arguments** are provided when the function is called. The values of these arguments are assigned to the corresponding parameters, allowing the function to perform its operation based on those values.
+**Arguments** সরবরাহ করা হয় যখন **function** call করা হয়। এই **arguments**‑এর value গুলো সেই соответствующий **parameters**‑এ অ্যাসাইন করা হয়, ফলে **function** সেই মান অনুযায়ী অপারেশন সম্পাদন করতে পারে।
 
 ### Types of Parameters
 
-- **Formal Parameters**: These are parameters that appear in the function definition. They are used to represent the expected values inside the function.
-- **Actual Parameters**: These are arguments that are passed during the function call.
+* **Formal Parameters**: এইগুলো হলো parameters যা **function definition**‑এ উপস্থিত থাকে। এগুলো **expected values**‑কে represent করে **inside the function**।
+* **Actual Parameters**: এগুলো হলো **arguments** যা **function call** করার সময় pass করা হয়।
 
 ---
 
 ### Interview Questions and Answers
 
-#### 1. What is the difference between pass-by-value and pass-by-reference in function arguments?
+#### 1.একটি function **arguments** এ pass‑by‑value এবং pass‑by‑reference এর মধ্যে পার্থক্য কি ?
 
 **Answer:**
 
-- **Pass-by-value**: The function gets a copy of the argument's value. Changes made to the parameter do not affect the original argument.
-- **Pass-by-reference**: The function gets a reference (memory address) to the argument, so any changes made to the parameter directly affect the original argument.
+* **Pass‑by‑value**: **function** একটি copy of the **argument’s** value পায়। parameter‑এ যেকোনো পরিবর্তন আসল **argument**‑কে প্রভাবিত করে না।
+* **Pass‑by‑reference**: **function** একটি reference (memory address) পায় **argument**‑এর, তাই parameter‑এ করা পরিবর্তন সরাসরি আসল **argument**‑কে প্রভাবিত করে।
 
 **Code Example**:
 
@@ -69,12 +70,12 @@ package main
 
 import "fmt"
 
-// Pass-by-value
+// Pass‑by‑value
 func modifyValue(x int) {
     x = 20
 }
 
-// Pass-by-reference
+// Pass‑by‑reference
 func modifyReference(x *int) {
     *x = 20
 }
@@ -89,10 +90,10 @@ func main() {
 }
 ```
 
-#### 2. How do you handle default arguments in Go?
+#### 2. আপনি কিভাবে Go তে default **arguments** handle করেন ?
 
 **Answer:**
-Go does not support default arguments directly. Instead, you can achieve default values using variadic functions or by explicitly checking if a value is provided.
+Go directly default **arguments** support করে না। পরিবর্তে, আপনি variadic **functions** ব্যবহার করতে বা explicit চেক করতে পারেন যদি কোনো value প্রদান করা হয় কি না।
 
 **Code Example**:
 
@@ -114,10 +115,10 @@ func main() {
 }
 ```
 
-#### 3. What is a variadic function, and how is it used?
+#### 3. **variadic function** কি এবং এটা কিভাবে কাজ করে ?
 
 **Answer:**
-A **variadic function** is a function that takes a variable number of arguments. It is defined using `...` in the parameter list. This allows you to pass any number of arguments.
+A **variadic function** হলো একটি **function** যা variable সংখ্যক **arguments** নিতে পারে। এটি `...` ব্যবহার করে **parameter list**‑এ ডিফাইন করা হয়। এর ফলে আপনি যেকোনো সংখ্যক **arguments** পাঠাতে পারেন।
 
 **Code Example**:
 
@@ -135,15 +136,15 @@ func sum(numbers ...int) int {
 }
 
 func main() {
-    fmt.Println(sum(1, 2, 3)) // Output: 6
+    fmt.Println(sum(1, 2, 3))         // Output: 6
     fmt.Println(sum(10, 20, 30, 40)) // Output: 100
 }
 ```
 
-#### 4. What will happen if a function is called with more arguments than its parameters?
+#### 4. যদি একটি **function** এর **parameters** থেকে বেশি **arguments** দিয়ে invoke করা হয় তবে কি হবে ?
 
 **Answer:**
-In Go, if the number of arguments passed to a function exceeds the number of parameters declared, the code will result in a compile-time error. Go checks the number of arguments and parameters at compile-time, and any mismatch in the number of arguments will cause an error.
+Go‑তে যদি পাঠানো **arguments**‑এর সংখ্যা **parameters**‑এর সংখ্যার থেকে বেশি হয়, তাহলে code‑এ compile‑time error হবে। Go compile‑time‑এ **arguments** এবং **parameters** এর সংখ্যা যাচাই করে, এবং mismatch থাকলে error।
 
 **Code Example**:
 
@@ -157,14 +158,14 @@ func greet(name string) {
 }
 
 func main() {
-    greet("John", "Doe") // Compile-time error: too many arguments
+    greet("John", "Doe") // Compile‑time error: too many arguments
 }
 ```
 
-#### 5. Can you return multiple values from a function in Go?
+#### 5. Go তে কি আপনি একটি **function** থেকে multiple values return করতে পারবেন ?
 
 **Answer:**
-Yes, Go allows a function to return multiple values. You can return multiple values of different types from a function.
+Yes, Go একটি **function** কে multiple values return করতে দেয়। আপনি বিভিন্ন টাইপের values return করতে পারেন।
 
 **Code Example**:
 

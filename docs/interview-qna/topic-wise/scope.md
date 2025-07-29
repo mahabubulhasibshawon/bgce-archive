@@ -1,31 +1,34 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-22
 **Category:** interview-qa/Scope
 **Tags:** [go, Scope]
 ]
 
-# Go Language: Understanding Scope
 
-## Introduction
+# স্কোপ (Scope) 
 
-In Go (Golang), **scope** refers to the region in the code where a variable, function, or constant is accessible. The scope determines the visibility and lifetime of variables and functions, which is essential for understanding how the Go compiler handles symbol resolution.
+## পরিচিতি
 
-There are several types of scopes in Go:
+Go (Golang)-এ **scope** বলতে কোডের সেই অংশকে বোঝানো হয় যেখানে একটি ভেরিয়েবল, ফাংশন বা কনস্ট্যান্ট অ্যাক্সেসযোগ্য থাকে। স্কোপ নির্ধারণ করে কোন ভেরিয়েবল বা ফাংশন কোথা থেকে দেখা যাবে এবং কতক্ষণ সক্রিয় থাকবে। এটি বোঝা গুরুত্বপূর্ণ কারণ স্কোপ Go কম্পাইলার কীভাবে সিম্বল রিজলভ করে তা নির্ধারণ করে।
 
-1. **Package Scope**: Variables or functions defined at the package level.
-2. **Function Scope**: Variables defined within a function.
-3. **Block Scope**: Variables defined inside a block of code, such as within loops, if-statements, etc.
-4. **Global Scope**: Variables or functions accessible throughout the entire program.
+Go-তে বিভিন্ন ধরণের স্কোপ আছে:
 
-This document will explore these different types of scope with code examples and will also cover common pitfalls and best practices related to variable scope in Go.
+1. **Package Scope**: প্যাকেজ লেভেলে সংজ্ঞায়িত ভেরিয়েবল বা ফাংশন
+2. **Function Scope**: ফাংশনের মধ্যে সংজ্ঞায়িত ভেরিয়েবল
+3. **Block Scope**: লুপ, if-statement ইত্যাদির মধ্যে সংজ্ঞায়িত ভেরিয়েবল
+4. **Global Scope**: পুরো প্রোগ্রামে অ্যাক্সেসযোগ্য ভেরিয়েবল বা ফাংশন
 
-## Types of Scope in Go
+এই ডকুমেন্টে আমরা এই স্কোপগুলো উদাহরণসহ আলোচনা করব এবং স্কোপ সম্পর্কিত সাধারণ ভুল ও সেরা চর্চাগুলো তুলে ধরব।
+
+---
+
+## Go-তে Scope-এর প্রকারভেদ
 
 ### 1. Package Scope
 
-In Go, the package scope refers to variables or functions that are accessible throughout the package in which they are declared. They can be accessed from any function within the package.
+Go-তে প্যাকেজ স্কোপ বলতে এমন ভেরিয়েবল বা ফাংশন বোঝানো হয় যেগুলো তাদের ডিক্লেয়ার করা প্যাকেজের মধ্যে যেকোনো ফাংশন থেকে অ্যাক্সেস করা যায়।
 
-#### Example: Package Scope
+#### উদাহরণ: Package Scope
 
 ```go
 package main
@@ -45,13 +48,15 @@ func main() {
 }
 ```
 
-In the above example, `globalVar` is accessible within the `main` and `printGlobalVar` functions because it is defined at the package level.
+উপরের উদাহরণে, `globalVar` প্যাকেজ লেভেলে ডিক্লেয়ার করা হয়েছে, তাই এটি `main` এবং `printGlobalVar` ফাংশনের মধ্যে অ্যাক্সেসযোগ্য।
+
+---
 
 ### 2. Function Scope
 
-Variables declared inside a function are local to that function and cannot be accessed outside of it. This is called **function scope**.
+যেসব ভেরিয়েবল ফাংশনের ভিতরে ডিক্লেয়ার করা হয়, সেগুলো শুধুমাত্র ঐ ফাংশনের মধ্যেই অ্যাক্সেসযোগ্য। একে বলা হয় **function scope**।
 
-#### Example: Function Scope
+#### উদাহরণ: Function Scope
 
 ```go
 package main
@@ -71,13 +76,15 @@ func main() {
 }
 ```
 
-In the example above, the variable `functionVar` is only available inside the `myFunction()` and cannot be accessed from `main()`.
+উদাহরণে, `functionVar` শুধুমাত্র `myFunction()` এর মধ্যে ব্যবহারযোগ্য এবং `main()` এর মধ্যে নয়।
+
+---
 
 ### 3. Block Scope
 
-Block scope refers to variables declared inside a block of code, such as within `if` statements, loops, or other code blocks.
+Block scope বোঝায় এমন ভেরিয়েবল যেগুলো কোডের একটি নির্দিষ্ট ব্লকের ভিতরে ডিক্লেয়ার করা হয়, যেমন `if` স্টেটমেন্ট, লুপ ইত্যাদি।
 
-#### Example: Block Scope
+#### উদাহরণ: Block Scope
 
 ```go
 package main
@@ -95,45 +102,56 @@ func main() {
 }
 ```
 
-The variable `blockVar` is only accessible within the `if` block where it is declared. Attempting to use it outside the block will result in a compile-time error.
+এখানে `blockVar` কেবল `if` ব্লকের মধ্যে অ্যাক্সেসযোগ্য। বাইরে ব্যবহার করলে কম্পাইল-টাইম এরর হবে।
+
+---
 
 ### 4. Global Scope (Cross-package Scope)
 
-In Go, global variables (package-level variables) can be shared across multiple files within the same package, but they cannot be accessed by other packages unless explicitly exported.
+Go-তে, গ্লোবাল ভেরিয়েবল (প্যাকেজ-লেভেল ভেরিয়েবল) একই প্যাকেজের একাধিক ফাইলে শেয়ার করা যায়। তবে, অন্য প্যাকেজ থেকে অ্যাক্সেস করতে চাইলে তা **exported** হতে হবে।
 
-#### Example: Cross-file Scope
+#### উদাহরণ: Cross-file Scope
 
 ```go
-// file1.go
-package main
+// global/shared.go
+package global
 
 import "fmt"
 
-var sharedVar = "This is a shared variable"
+var SharedVar = "This is a shared variable"
 
-func displaySharedVar() {
-    fmt.Println(sharedVar)
+func DisplaySharedVar() {
+    fmt.Println(SharedVar)
 }
 
-// file2.go
+// main.go
 package main
 
+import (
+    "example.com/project/global" // adjust based on your module path
+)
+
 func main() {
-    displaySharedVar() // Output: This is a shared variable
+    global.DisplaySharedVar() // Output: This is a shared variable
 }
+
 ```
 
-In this case, the variable `sharedVar` is accessible across multiple files because it is within the same package.
+এই ক্ষেত্রে, `SharedVar` একই প্যাকেজের একাধিক ফাইলে অ্যাক্সেসযোগ্য।
 
-## Rules of Scope in Go
+---
 
-1. **Variable Shadowing**: When a local variable has the same name as a variable in an outer scope, the local variable "shadows" the outer variable.
-2. **Exported Variables**: Variables that start with an uppercase letter are exported and accessible from other packages. Lowercase variables are private to the package.
-3. **Short Declaration**: The `:=` operator can be used for declaring and initializing variables in a more concise manner within functions or blocks.
+## Scope-সম্পর্কিত নিয়মাবলি
 
-## Common Pitfalls in Scope
+1. **Variable Shadowing**: যখন একটি লোকাল ভেরিয়েবলের নাম বাইরের স্কোপের ভেরিয়েবলের সাথে একই হয়, তখন লোকাল ভেরিয়েবলটি বাইরের ভেরিয়েবলকে "ছায়া" দেয়।
+2. **Exported Variables**: বড় হাতের অক্ষরে শুরু হওয়া ভেরিয়েবল অন্য প্যাকেজ থেকেও অ্যাক্সেসযোগ্য হয়। ছোট হাতের অক্ষরে শুরু হলে তা শুধু নিজের প্যাকেজেই সীমাবদ্ধ।
+3. **Short Declaration**: `:=` অপারেটর ব্যবহার করে ফাংশন বা ব্লকের মধ্যে সংক্ষিপ্তভাবে ভেরিয়েবল ডিক্লেয়ার ও ইনিশিয়ালাইজ করা যায়।
 
-1. **Variable Shadowing**: When a variable in an inner scope has the same name as a variable in an outer scope, the inner variable shadows the outer one. This can lead to unintended behavior.
+---
+
+## Scope-এ সাধারণ ভুল
+
+1. **Variable Shadowing**: একই নামের ভেরিয়েবল ভেতরের স্কোপে আবার ডিক্লেয়ার করলে বাইরের ভেরিয়েবল ঢেকে যায়, যা অনিচ্ছাকৃত আচরণ তৈরি করতে পারে।
 
    ```go
    package main
@@ -150,7 +168,7 @@ In this case, the variable `sharedVar` is accessible across multiple files becau
    fmt.Println(x) // Output: 10
    ```
 
-2. **Accessing Unexported Variables**: If a variable is declared with a lowercase first letter, it is not accessible from other packages.
+2. **Unexported Variables অ্যাক্সেস করার চেষ্টা**: ছোট হাতের অক্ষরে ডিক্লেয়ার করা ভেরিয়েবল অন্য প্যাকেজ থেকে অ্যাক্সেস করা যায় না।
 
    ```go
    package main
@@ -164,11 +182,13 @@ In this case, the variable `sharedVar` is accessible across multiple files becau
    }
    ```
 
-## 5 Interview Questions with Code
+---
 
-### Q1: What is the scope of a variable declared inside a for loop?
+## 5টি ইন্টারভিউ প্রশ্ন কোডসহ
 
-#### Code:
+### Q1: `for` লুপে ডিক্লেয়ার করা ভেরিয়েবলের স্কোপ কী?
+
+#### কোড:
 
 ```go
 package main
@@ -185,11 +205,13 @@ func main() {
 }
 ```
 
-**Answer**: The variable `loopVar` is scoped to the `for` loop and cannot be accessed outside of it.
+**উত্তর**: `loopVar` কেবল `for` লুপের ভিতরেই অ্যাক্সেসযোগ্য।
 
-### Q2: What happens if you declare a variable with the same name in different scopes?
+---
 
-#### Code:
+### Q2: ভিন্ন স্কোপে একই নামের ভেরিয়েবল ডিক্লেয়ার করলে কী হয়?
+
+#### কোড:
 
 ```go
 package main
@@ -205,56 +227,67 @@ func main() {
 }
 ```
 
-**Answer**: The inner variable `x` shadows the outer one within the scope of the `main()` function.
+**উত্তর**: `main()` এর ভিতরের `x` বাইরের `x`-কে ছায়া দেয় (shadow করে) এবং শুধুমাত্র main-এর মধ্যে কার্যকর থাকে।
 
-### Q3: How does the `:=` operator work in Go with variable scope?
+---
 
-#### Code:
+### Q3: `:=` অপারেটর ভেরিয়েবল স্কোপে কীভাবে কাজ করে?
+
+#### কোড:
 
 ```go
 package main
 
 import "fmt"
 
+var a = 5
+
 func main() {
-    var a = 5
     fmt.Println(a) // Output: 5
     a := 10 // Short declaration: Creates a new a variable within main's scope
     fmt.Println(a) // Output: 10
 }
 ```
 
-**Answer**: The `:=` operator creates a new variable in the local scope, shadowing the outer variable `a`.
+**উত্তর**: `:=` নতুন ভেরিয়েবল তৈরি করে, যা বাইরের `a`-কে shadow করে।
 
-### Q4: How does Go handle global scope variables across multiple files?
+---
 
-#### Code:
+### Q4: Go কীভাবে গ্লোবাল স্কোপ ভেরিয়েবল হ্যান্ডল করে একাধিক ফাইলে?
+
+#### কোড:
 
 ```go
-// file1.go
-package main
+// global/shared.go
+package global
 
 import "fmt"
 
-var globalVar = "Global variable"
+var SharedVar = "This is a shared variable"
 
-func displayGlobalVar() {
-    fmt.Println(globalVar)
+func DisplaySharedVar() {
+    fmt.Println(SharedVar)
 }
 
-// file2.go
+// main.go
 package main
 
+import (
+    "example.com/project/global" // adjust based on your module path
+)
+
 func main() {
-    displayGlobalVar() // Output: Global variable
+    global.DisplaySharedVar() // Output: This is a shared variable
 }
 ```
 
-**Answer**: The variable `globalVar` is accessible across multiple files within the same package.
+**উত্তর**: একই প্যাকেজের মধ্যে `SharedVar` একাধিক ফাইলে অ্যাক্সেসযোগ্য।
 
-### Q5: What is the significance of variable naming conventions in Go?
+---
 
-#### Code:
+### Q5: Go-তে ভেরিয়েবল নামকরণের নিয়মের গুরুত্ব কী?
+
+#### কোড:
 
 ```go
 package main
@@ -273,4 +306,5 @@ func main() {
 }
 ```
 
-**Answer**: In Go, variables that start with an uppercase letter are exported and can be accessed outside the package, while variables that start with a lowercase letter are unexported and private to the package.
+**উত্তর**: বড় হাতের অক্ষরে শুরু হওয়া ভেরিয়েবল এক্সপোর্টেড এবং অন্য প্যাকেজ থেকে অ্যাক্সেসযোগ্য, ছোট হাতের হলে তা কেবল নিজের প্যাকেজেই সীমাবদ্ধ।
+

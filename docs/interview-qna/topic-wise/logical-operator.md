@@ -1,24 +1,32 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-19
 **Category:** interview-qa/logical_operators
 **Tags:** [go, logical_operators]
 ]
 
-# Logical Operators
+# Logical Operators (লজিকাল অপারেটরস)
 
-## Logical operators are used to determine the logic between variables or values.
+## Logical operators ব্যবহার করা হয় ভেরিয়েবল বা মানের (values) মধ্যে লজিক বোঝার জন্য।
 
-## 1. Logical and (&&)
+---
 
-### Returns true if both statements are true
+## 1. Logical and (`&&`)
 
-## 2. Logical or (||)
+### যখন দুটি শর্তই true হয়, তখন `true` রিটার্ন করে।
 
-### Returns true if one statements is true
+---
 
-## 3. Logical not (!)
+## 2. Logical or (`||`)
 
-### Reverse the result, returns false if the result is true
+### যখন যেকোনো একটি শর্ত true হয়, তখন `true` রিটার্ন করে।
+
+---
+
+## 3. Logical not (`!`)
+
+### ফলাফল উল্টে দেয়। যদি result `true` হয়, তাহলে এটি `false` রিটার্ন করবে।
+
+---
 
 ```go
 package main
@@ -26,27 +34,31 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(true && true) // true
-	fmt.Println(true && false) // false
+	fmt.Println(true && true)   // true
+	fmt.Println(true && false)  // false
 
-	fmt.Println(true || true) // true
+	fmt.Println(true || true)   // true
 	fmt.Println(false || false) // false
 
-	fmt.Println(!true) // false
+	fmt.Println(!true)  // false
 	fmt.Println(!false) // true
 }
 ```
 
-## Frequently Asked Questions
+---
 
-### 1. What is the difference between `&&` and `||` in Go?
+## প্রায় জিজ্ঞাসা করা প্রশ্ন (FAQ)
 
-**Answer:**
+---
 
-- `&&` (Logical AND) returns true only if both conditions are true.
-- `||` (Logical OR) returns true if at least one condition is true.
+### 1. Go-তে `&&` এবং `||` এর মধ্যে পার্থক্য কী?
 
-**Code Example:**
+**উত্তর:**
+
+* `&&` (Logical AND) তখনই `true` রিটার্ন করে যখন দুইটি শর্তই `true` হয়।
+* `||` (Logical OR) তখনই `true` রিটার্ন করে যখন অন্তত একটি শর্ত `true` হয়।
+
+**উদাহরণ কোড:**
 
 ```go
 package main
@@ -59,13 +71,15 @@ func main() {
 }
 ```
 
-### 2. How does the `!` operator work in Go?
+---
 
-**Answer:**
+### 2. Go-তে `!` অপারেটর কীভাবে কাজ করে?
 
-- The `!` (Logical NOT) operator reverses the boolean value.
+**উত্তর:**
 
-**Code Example:**
+* `!` (Logical NOT) অপারেটর একটি boolean মান উল্টে দেয়।
+
+**উদাহরণ কোড:**
 
 ```go
 package main
@@ -78,19 +92,23 @@ func main() {
 }
 ```
 
-### 3. Can logical operators be used with non-boolean values?
+---
 
-**Answer:**
+### 3. Go-তে logical operators কি non-boolean value-এর সঙ্গে ব্যবহার করা যায়?
 
-- No, logical operators in Go work only with boolean values.
+**উত্তর:**
 
-### 4. How can I combine multiple logical operators in a single expression?
+* না, Go-তে logical operators শুধুমাত্র boolean মানের সাথেই কাজ করে।
 
-**Answer:**
+---
 
-- You can combine them using parentheses to control precedence.
+### 4. একাধিক logical operators একসাথে কীভাবে ব্যবহার করব?
 
-**Code Example:**
+**উত্তর:**
+
+* Parentheses `()` ব্যবহার করে precedence (অগ্রাধিকার) নিয়ন্ত্রণ করতে পারেন।
+
+**উদাহরণ কোড:**
 
 ```go
 package main
@@ -102,13 +120,15 @@ func main() {
 }
 ```
 
-### 5. What is the precedence of logical operators in Go?
+---
 
-**Answer:**
+### 5. Go-তে logical operators-এর precedence কী?
 
-- `!` has the highest precedence, followed by `&&`, and then `||`.
+**উত্তর:**
 
-**Code Example:**
+* `!` এর precedence সবচেয়ে বেশি, এরপর `&&`, তারপর `||`।
+
+**উদাহরণ কোড:**
 
 ```go
 package main
@@ -120,13 +140,15 @@ func main() {
 }
 ```
 
-### 6. How can I use logical operators in conditional statements?
+---
 
-**Answer:**
+### 6. কীভাবে conditional statement-এ logical operators ব্যবহার করব?
 
-- Logical operators are often used in `if` statements to combine conditions.
+**উত্তর:**
 
-**Code Example:**
+* `if` statement-এর মধ্যে শর্তগুলো মিলিয়ে দেখার জন্য logical operators ব্যবহার করা হয়।
+
+**উদাহরণ কোড:**
 
 ```go
 package main
@@ -140,13 +162,15 @@ func main() {
 }
 ```
 
-### 7. Can logical operators short-circuit in Go?
+---
 
-**Answer:**
+### 7. Go-তে logical operators কি short-circuit করে?
 
-- Yes, `&&` and `||` short-circuit. For example, `&&` stops evaluating if the first condition is false.
+**উত্তর:**
 
-**Code Example:**
+* হ্যাঁ, `&&` এবং `||` উভয়ই short-circuit করে। যেমন `&&` প্রথম শর্ত `false` হলে দ্বিতীয়টা আর দেখে না।
+
+**উদাহরণ কোড:**
 
 ```go
 package main
@@ -154,17 +178,19 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(false && (5 > 3)) // false (5 > 3 is not evaluated)
+	fmt.Println(false && (5 > 3)) // false (5 > 3 evaluate হয় না)
 }
 ```
 
-### 8. How can I debug logical expressions in Go?
+---
 
-**Answer:**
+### 8. Logical expression কীভাবে debug করব?
 
-- Use `fmt.Println` to print intermediate results.
+**উত্তর:**
 
-**Code Example:**
+* `fmt.Println` ব্যবহার করে মাঝখানের intermediate ফলাফলগুলো দেখতে পারেন।
+
+**উদাহরণ কোড:**
 
 ```go
 package main
@@ -178,13 +204,15 @@ func main() {
 }
 ```
 
-### 9. Can logical operators be used in loops?
+---
 
-**Answer:**
+### 9. কী loop-এর মধ্যে logical operators ব্যবহার করা যায়?
 
-- Yes, they can be used in loop conditions.
+**উত্তর:**
 
-**Code Example:**
+* হ্যাঁ, loop-এর condition-এ logical operators ব্যবহার করা যায়।
+
+**উদাহরণ কোড:**
 
 ```go
 package main
@@ -198,13 +226,15 @@ func main() {
 }
 ```
 
-### 10. What happens if I use logical operators with nil values?
+---
 
-**Answer:**
+### 10. `nil` value-এর সাথে logical operators ব্যবহার করলে কী হয়?
 
-- Logical operators cannot be directly used with `nil`. You need to compare `nil` explicitly.
+**উত্তর:**
 
-**Code Example:**
+* সরাসরি `nil` এর সাথে logical operators ব্যবহার করা যায় না। আগে `nil` check করতে হয়।
+
+**উদাহরণ কোড:**
 
 ```go
 package main

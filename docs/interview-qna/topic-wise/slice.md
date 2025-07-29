@@ -1,17 +1,18 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-19
 **Category:** interview-qa/slices
 **Tags:** [go, slices, arrays, make]
+]
 
 # Slices
 
-Slices are also used to store multiple values of the same type in a single variable, however unlike arrays, the length of a slice can grow and shrink as you see fit.
+Slices একই ধরনের একাধিক মান একটি ভেরিয়েবলেই সংরক্ষণ করতে ব্যবহৃত হয়, তবে arrays-এর মতো নির্দিষ্ট দৈর্ঘ্যের নয়। Slice-এর দৈর্ঘ্য আপনি চাইলে বড় বা ছোট করতে পারেন।
 
-There are several ways to create a slice 👇
+Slices তৈরি করার কয়েকটি উপায় 👇
 
-1. Using the `[]datatype{values}` format
-2. Create a slice from an array
-3. Using the `make()` function
+1. `[]datatype{values}` ফরম্যাট ব্যবহার করে
+2. একটি array থেকে slice তৈরি করে
+3. `make()` ফাংশন ব্যবহার করে
 
 ```go
 // name := []datatype{values}
@@ -32,9 +33,11 @@ func main() {
 }
 ```
 
+---
+
 ## Make() Method
 
-The `make` function will create a zeroed array and return a slice referencing an array. This is a great way to create a dynamically sized array. To create a slice using the `make` function, we need to specify three arguments: type, length, and capacity.
+`make` ফাংশন একটি শূন্য (zeroed) array তৈরি করে এবং তার একটি slice রিটার্ন করে। এটি একটি ডাইনামিক সাইজের slice তৈরি করার ভালো উপায়। `make` ব্যবহার করতে হলে তিনটি প্যারামিটার দিতে হয়: টাইপ, দৈর্ঘ্য এবং ক্যাপাসিটি।
 
 ```go
 package main
@@ -50,9 +53,9 @@ func main() {
 
 ## Frequently Asked Questions
 
-### 1. How do you create an empty slice in Go?
+### ১. Go-তে কীভাবে একটি খালি slice তৈরি করবেন?
 
-**Answer:** Use `[]datatype{}` to create an empty slice.
+**উত্তর:** `[]datatype{}` ব্যবহার করে একটি খালি slice তৈরি করতে পারেন।
 
 ```go
 package main
@@ -64,9 +67,11 @@ func main() {
 }
 ```
 
-### 2. How do you create a slice with initial values?
+---
 
-**Answer:** Use `[]datatype{values}`.
+### ২. কীভাবে প্রাথমিক মান সহ একটি slice তৈরি করবেন?
+
+**উত্তর:** `[]datatype{values}` ব্যবহার করুন।
 
 ```go
 package main
@@ -78,9 +83,11 @@ func main() {
 }
 ```
 
-### 3. How do you create a slice from an array?
+---
 
-**Answer:** Use slicing syntax `array[start:end]`.
+### ৩. কীভাবে একটি array থেকে slice তৈরি করবেন?
+
+**উত্তর:** slicing সিনট্যাক্স `array[start:end]` ব্যবহার করুন।
 
 ```go
 package main
@@ -93,9 +100,11 @@ func main() {
 }
 ```
 
-### 4. How do you use the `make` function to create a slice?
+---
 
-**Answer:** Use `make(type, length, capacity)`.
+### ৪. `make` ফাংশন ব্যবহার করে কীভাবে slice তৈরি করবেন?
+
+**উত্তর:** `make(type, length, capacity)` ব্যবহার করুন।
 
 ```go
 package main
@@ -107,9 +116,11 @@ func main() {
 }
 ```
 
-### 5. How do you append elements to a slice?
+---
 
-**Answer:** Use the `append` function.
+### ৫. কীভাবে slice-এ নতুন উপাদান যোগ করবেন?
+
+**উত্তর:** `append` ফাংশন ব্যবহার করুন।
 
 ```go
 package main
@@ -122,9 +133,11 @@ func main() {
 }
 ```
 
-### 6. How do you copy one slice to another?
+---
 
-**Answer:** Use the `copy` function.
+### ৬. কীভাবে একটি slice কপি করবেন অন্যটিতে?
+
+**উত্তর:** `copy` ফাংশন ব্যবহার করুন।
 
 ```go
 package main
@@ -138,9 +151,11 @@ func main() {
 }
 ```
 
-### 7. How do you find the length and capacity of a slice?
+---
 
-**Answer:** Use `len(slice)` and `cap(slice)`.
+### ৭. slice-এর দৈর্ঘ্য ও ক্যাপাসিটি কীভাবে জানবেন?
+
+**উত্তর:** `len(slice)` এবং `cap(slice)` ব্যবহার করুন।
 
 ```go
 package main
@@ -153,9 +168,11 @@ func main() {
 }
 ```
 
-### 8. How do you create a multidimensional slice?
+---
 
-**Answer:** Use slices of slices.
+### ৮. কীভাবে একটি মাল্টিডাইমেনশনাল slice তৈরি করবেন?
+
+**উত্তর:** slice-এর ভিতরে slice ব্যবহার করে।
 
 ```go
 package main
@@ -171,9 +188,11 @@ func main() {
 }
 ```
 
-### 9. How do you remove an element from a slice?
+---
 
-**Answer:** Use slicing to exclude the element.
+### ৯. slice থেকে একটি উপাদান কীভাবে সরাবেন?
+
+**উত্তর:** slicing এবং `append` ব্যবহার করে।
 
 ```go
 package main
@@ -186,9 +205,11 @@ func main() {
 }
 ```
 
-### 10. How do you iterate over a slice in Go?
+---
 
-**Answer:** Use a `for` loop or `range`.
+### ১০. Go-তে কীভাবে slice-এর উপর লুপ চালাবেন?
+
+**উত্তর:** `for` লুপ বা `range` ব্যবহার করুন।
 
 ```go
 package main
@@ -202,15 +223,17 @@ func main() {
 }
 ```
 
-## ⚡ Array vs Slice
+---
 
-| Feature      | Array                           | Slice                                           |
-| ------------ | ------------------------------- | ----------------------------------------------- |
-| Size         | Fixed                           | Dynamic (can grow/shrink)                       |
-| Type         | Value type                      | Reference type                                  |
-| Memory       | All data copied on assignment   | Just the slice descriptor copied (shallow copy) |
-| Creation     | `var a [5]int`                  | `var s []int` or slicing an array               |
-| Common Usage | Rare (low-level memory control) | Very common                                     |
-| Performance  | No hidden cost                  | Some overhead with dynamic growth               |
+## ⚡ Array বনাম Slice
+
+| ফিচার          | Array                             | Slice                                             |
+| -------------- | --------------------------------- | ------------------------------------------------- |
+| সাইজ           | নির্দিষ্ট                         | ডাইনামিক (বাড়তে/কমতে পারে)                       |
+| টাইপ           | Value type                        | Reference type                                    |
+| মেমোরি         | অ্যাসাইন করলে পুরো ডেটা কপি হয়   | কেবল রেফারেন্স কপি হয় (shallow copy)             |
+| তৈরি           | `var a [5]int`                    | `var s []int` বা array থেকে slice                 |
+| সাধারণ ব্যবহার | খুব কম (low-level memory control) | খুবই সাধারণ                                       |
+| পারফরম্যান্স   | কোনো অতিরিক্ত খরচ নেই             | ডাইনামিক গ্রোথের কারণে সামান্য ওভারহেড থাকতে পারে |
 
 ---

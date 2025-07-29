@@ -1,24 +1,25 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-19
 **Category:** e.g., interview-qa/topic_name
 **Tags:** [go, concurrency, channels]
 ]
 
-# Comparison Operators
+---
 
-## Comparison operators are used to compare two values
+# তুলনামূলক অপারেটর (Comparison Operators)
 
-| Operator | Name                     | Example |
-| -------- | ------------------------ | ------- |
-| ==       | Equal to                 | x == y  |
-| !=       | Not equal                | x != y  |
-| >        | Greater than             | x > y   |
-| <        | Less than                | x < y   |
-| >=       | Greater than or equal to | x >= y  |
-| <=       | Less than or equal to    | x <= y  |
+## তুলনামূলক অপারেটর দুটি মানকে একে অপরের সাথে তুলনা করার জন্য ব্যবহার করা হয়
+
+| অপারেটর | নাম          | উদাহরণ |
+| ------- | ------------ | ------ |
+| ==      | সমান         | x == y |
+| !=      | সমান নয়     | x != y |
+| >       | এর চেয়ে বড় | x > y  |
+| <       | এর চেয়ে ছোট | x < y  |
+| >=      | সমান বা বড়  | x >= y |
+| <=      | সমান বা ছোট  | x <= y |
 
 ```go
-
 package main
 
 import "fmt"
@@ -35,11 +36,11 @@ func main() {
 
 ## Frequently Asked Questions
 
-### 1. What is the purpose of comparison operators in Go?
+### 1. Go-তে তুলনামূলক অপারেটরের উদ্দেশ্য কী?
 
-**Answer:** Comparison operators are used to compare two values and return a boolean result (true or false).
+**উত্তর:** তুলনামূলক অপারেটর দুটি মানকে তুলনা করে এবং একটি boolean ফলাফল (true বা false) রিটার্ন করে।
 
-**Example:**
+**উদাহরণ:**
 
 ```go
 package main
@@ -54,11 +55,11 @@ func main() {
 }
 ```
 
-### 2. Can comparison operators be used with strings in Go?
+### 2. Go-তে কি স্ট্রিং এর সাথে তুলনামূলক অপারেটর ব্যবহার করা যায়?
 
-**Answer:** Yes, comparison operators can be used with strings to compare their lexicographical order.
+**উত্তর:** হ্যাঁ, স্ট্রিং এর অক্ষরক্রম (lexicographical order) অনুযায়ী তুলনা করতে এই অপারেটর ব্যবহার করা যায়।
 
-**Example:**
+**উদাহরণ:**
 
 ```go
 package main
@@ -71,11 +72,11 @@ func main() {
 }
 ```
 
-### 3. How does the `==` operator work with structs in Go?
+### 3. Go-তে struct এর সাথে `==` অপারেটর কীভাবে কাজ করে?
 
-**Answer:** The `==` operator can be used to compare structs if all their fields are comparable.
+**উত্তর:** যদি struct-এর সব ফিল্ড তুলনাযোগ্য হয়, তাহলে `==` অপারেটর দিয়ে struct তুলনা করা যায়।
 
-**Example:**
+**উদাহরণ:**
 
 ```go
 package main
@@ -93,26 +94,26 @@ func main() {
 }
 ```
 
-### 4. What happens if you compare two different types in Go?
+### 4. যদি দুইটি আলাদা টাইপের মান তুলনা করা হয়, তাহলে কী হয়?
 
-**Answer:** Comparing two different types will result in a compile-time error.
+**উত্তর:** ভিন্ন টাইপের মান তুলনা করলে compile-time error হয়।
 
-**Example:**
+**উদাহরণ:**
 
 ```go
 package main
 
 func main() {
-	// Uncommenting the following line will cause a compile-time error
+	// নিচের লাইনটি আনকমেন্ট করলে compile-time error হবে
 	// fmt.Println(10 == "10")
 }
 ```
 
-### 5. Can comparison operators be used with pointers?
+### 5. Go-তে কি pointer এর সাথে তুলনা করা যায়?
 
-**Answer:** Yes, comparison operators can be used to compare pointers for equality or inequality.
+**উত্তর:** হ্যাঁ, pointer গুলোকে `==` এবং `!=` অপারেটর দিয়ে তুলনা করা যায়।
 
-**Example:**
+**উদাহরণ:**
 
 ```go
 package main
@@ -128,11 +129,11 @@ func main() {
 }
 ```
 
-### 6. How does the `!=` operator work?
+### 6. `!=` অপারেটর কীভাবে কাজ করে?
 
-**Answer:** The `!=` operator checks if two values are not equal.
+**উত্তর:** `!=` অপারেটর যাচাই করে যে দুইটি মান সমান নয় কিনা।
 
-**Example:**
+**উদাহরণ:**
 
 ```go
 package main
@@ -146,11 +147,11 @@ func main() {
 }
 ```
 
-### 7. Can comparison operators be used with arrays?
+### 7. Go-তে কি array গুলো তুলনা করা যায়?
 
-**Answer:** Yes, arrays can be compared using `==` and `!=` if their elements are comparable.
+**উত্তর:** হ্যাঁ, যদি array-এর সব উপাদান তুলনাযোগ্য হয় তাহলে `==` এবং `!=` দিয়ে array তুলনা করা যায়।
 
-**Example:**
+**উদাহরণ:**
 
 ```go
 package main
@@ -164,11 +165,11 @@ func main() {
 }
 ```
 
-### 8. What is the result of comparing two slices using `==`?
+### 8. দুটি slice তুলনা করলে কী হয়?
 
-**Answer:** Slices cannot be compared using `==` except for comparison with `nil`.
+**উত্তর:** slice গুলোকে সরাসরি `==` দিয়ে তুলনা করা যায় না, শুধুমাত্র `nil` এর সাথে তুলনা করা যায়।
 
-**Example:**
+**উদাহরণ:**
 
 ```go
 package main
@@ -179,16 +180,16 @@ func main() {
 	s1 := []int{1, 2, 3}
 	s2 := []int{1, 2, 3}
 	fmt.Println(s1 == nil) // false
-	// Uncommenting the following line will cause a compile-time error
+	// নিচের লাইনটি আনকমেন্ট করলে compile-time error হবে
 	// fmt.Println(s1 == s2)
 }
 ```
 
-### 9. How does Go handle floating-point comparison?
+### 9. Go-তে floating-point সংখ্যা কীভাবে তুলনা করা হয়?
 
-**Answer:** Floating-point numbers can be compared using comparison operators, but be cautious of precision issues.
+**উত্তর:** floating-point সংখ্যা তুলনা করা যায়, কিন্তু নির্ভুলতা সংক্রান্ত সমস্যার কারণে সতর্ক থাকতে হয়।
 
-**Example:**
+**উদাহরণ:**
 
 ```go
 package main
@@ -198,15 +199,15 @@ import "fmt"
 func main() {
 	x := 0.1 + 0.2
 	y := 0.3
-	fmt.Println(x == y) // false due to precision issues
+	fmt.Println(x == y) // false নির্ভুলতার কারণে
 }
 ```
 
-### 10. Can you compare custom types using comparison operators?
+### 10. কাস্টম টাইপের মধ্যে তুলনা করা যায় কি?
 
-**Answer:** Custom types can be compared if their underlying types support comparison.
+**উত্তর:** কাস্টম টাইপের ভিত্তি যদি তুলনাযোগ্য হয় তাহলে সেগুলো তুলনা করা যায়।
 
-**Example:**
+**উদাহরণ:**
 
 ```go
 package main
@@ -221,3 +222,5 @@ func main() {
 	fmt.Println(a1 > a2) // true
 }
 ```
+
+---

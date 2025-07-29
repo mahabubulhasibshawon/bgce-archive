@@ -1,10 +1,10 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-19
 **Category:** interview-qa/boolean
 **Tags:** [go, boolean, data-types]
 ]
 
-# A boolean data-type can either be "TRUE" or "FALSE"
+# একটি বুলিয়ান ডেটা-টাইপ হতে পারে "TRUE" অথবা "FALSE"
 
 ```go
 package main
@@ -21,9 +21,10 @@ func main() {
 
 ## Frequently Asked Questions
 
-### Q1: How can I use boolean values in conditional statements?
+### Qপ্রশ্ন ১: কিভাবে শর্তযুক্ত স্টেটমেন্টে বুলিয়ান ভ্যালু ব্যবহার করা যায়?
 
-**Answer:** Boolean values are often used in conditional statements to control the flow of a program. For example:
+**উত্তর:** বুলিয়ান ভ্যালু প্রায়ই শর্তযুক্ত স্টেটমেন্টে ব্যবহৃত হয় একটি প্রোগ্রামের প্রবাহ নিয়ন্ত্রণ করতে। 
+উদাহরণস্বরূপ:
 
 ```go
 package main
@@ -40,9 +41,9 @@ func main() {
 }
 ```
 
-### Q2: Can boolean values be compared directly?
+### প্রশ্ন ২: বুলিয়ান ভ্যালু কি সরাসরি তুলনা করা যায়?
 
-**Answer:** Yes, boolean values can be compared directly using comparison operators. For example:
+**উত্তর:** হ্যাঁ, বুলিয়ান ভ্যালুগুলো সরাসরি তুলনা করা যায় তুলনা অপারেটর ব্যবহার করে। উদাহরণস্বরূপ:
 
 ```go
 package main

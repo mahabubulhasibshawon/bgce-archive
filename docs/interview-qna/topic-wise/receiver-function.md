@@ -1,16 +1,17 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-22
 **Category:** interview-qa/Receiver Function
 **Tags:** [go, Receiver Function]
 ]
 
-# 📦 Receiver Function in Go
 
-A receiver function in Go is a method bound to a specific type—typically a struct. It enables you to implement object-oriented behavior by defining methods on user-defined types.
+# 📦 Go-তে Receiver Function
+
+Go-তে একটি receiver function হল এমন একটি মেথড যা একটি নির্দিষ্ট টাইপের—সাধারণত struct-এর সাথে যুক্ত থাকে। এটি user-defined টাইপে মেথড সংজ্ঞায়িত করার মাধ্যমে object-oriented আচরণ বাস্তবায়ন করতে সাহায্য করে।
 
 ---
 
-## 🧱 Struct and Receiver Basics
+## 🧱 Struct এবং Receiver বেসিকস
 
 ### Struct Definition
 
@@ -24,7 +25,7 @@ type User struct {
 
 ---
 
-## 📞 Regular Function vs Receiver Function
+## 📞 Regular Function বনাম Receiver Function
 
 ### Regular Function
 
@@ -35,7 +36,7 @@ func printUser(user User) {
 }
 ```
 
-This is a standalone function that takes `User` as a parameter.
+এটি একটি স্ট্যান্ডঅ্যালোন ফাংশন যা `User` প্যারামিটার হিসেবে গ্রহণ করে।
 
 ### Value Receiver Method
 
@@ -46,7 +47,7 @@ func (u User) printDetails() {
 }
 ```
 
-Here, `printDetails()` is associated with `User` type using a value receiver. It works on a copy, so original data won’t change.
+এখানে, `printDetails()` মেথডটি `User` টাইপের সাথে value receiver হিসেবে যুক্ত। এটি একটি কপির উপর কাজ করে, তাই মূল ডেটা পরিবর্তন হয় না।
 
 ### Pointer Receiver Method
 
@@ -56,11 +57,11 @@ func (u *User) updateAge(newAge int) {
 }
 ```
 
-This method modifies the original `User` struct because it uses a pointer receiver.
+এই মেথডটি মূল `User` struct-কে পরিবর্তন করে কারণ এটি pointer receiver ব্যবহার করছে।
 
 ---
 
-## ✅ Main Function with Usage
+## ✅ Main Function সহ ব্যবহার
 
 ```go
 func main() {
@@ -86,7 +87,7 @@ func main() {
 
 ---
 
-## 🔍 Additional Receiver Method
+## 🔍 অতিরিক্ত Receiver Method
 
 ```go
 // Value receiver that does not affect original struct
@@ -96,7 +97,7 @@ func (u User) call(age int) {
 }
 ```
 
-This will not change the actual `User.Age` outside the function.
+এটি আসল `User.Age` পরিবর্তন করবে না, শুধুমাত্র অস্থায়ী মান দেখাবে।
 
 ---
 
@@ -116,53 +117,54 @@ User2's age after call(): 25
 
 ---
 
-## 💡 Key Takeaways
+## 💡 মূল পয়েন্টসমূহ
 
-- ✅ Value receivers are good for read-only operations.
-- ✅ Pointer receivers are used when you want to modify the actual data.
-- ✅ Go supports object-like behavior through receiver functions.
-- ✅ Methods with pointer receivers can be called on both values and pointers.
+* ✅ Value receivers শুধুমাত্র পড়ার জন্য কার্যকর।
+* ✅ Pointer receivers ব্যবহার করা হয় যখন আসল ডেটা পরিবর্তন করতে হয়।
+* ✅ Go object-এর মতো আচরণ সমর্থন করে receiver function-এর মাধ্যমে।
+* ✅ Pointer receiver দিয়ে লেখা মেথড struct-এর value বা pointer—দুই অবস্থায়ই কল করা যায়।
 
-## 10 Interview Questions and Answers
+## 10টি ইন্টারভিউ প্রশ্ন ও উত্তর
 
-1. **What is a receiver function in Go?**
+1. **Go-তে receiver function কী?**
 
-   - A receiver function is a method associated with a specific type, allowing you to define methods on structs or other types.
+   * একটি মেথড যা একটি নির্দিষ্ট টাইপের সাথে যুক্ত থাকে, এবং struct বা অন্য টাইপের উপর মেথড সংজ্ঞায়িত করতে সাহায্য করে।
 
-2. **What is the difference between a value receiver and a pointer receiver?**
+2. **Value receiver ও Pointer receiver-এর মধ্যে পার্থক্য কী?**
 
-   - A value receiver operates on a copy of the object, while a pointer receiver operates on the actual object, allowing modifications.
+   * Value receiver একটি অবজেক্টের কপির উপর কাজ করে, আর Pointer receiver আসল অবজেক্টের উপর কাজ করে ও সেটি পরিবর্তন করতে পারে।
 
-3. **Can you define multiple receiver functions for the same type?**
+3. **একই টাইপের জন্য কি একাধিক receiver function সংজ্ঞায়িত করা যায়?**
 
-   - Yes, you can define multiple receiver functions for the same type.
+   * হ্যাঁ, একই টাইপের জন্য একাধিক receiver function সংজ্ঞায়িত করা যায়।
 
-4. **What is the syntax for defining a receiver function?**
+4. **Receiver function সংজ্ঞায়নের সিনট্যাক্স কী?**
 
-   - `func (receiverType TypeName) methodName(parameters) {}`
+   * `func (receiverType TypeName) methodName(parameters) {}`
 
-5. **Can receiver functions be used with built-in types?**
+5. **Built-in টাইপের জন্য কি receiver function ব্যবহার করা যায়?**
 
-   - No, receiver functions can only be defined for user-defined types.
+   * না, receiver function শুধুমাত্র user-defined টাইপের জন্যই সংজ্ঞায়িত করা যায়।
 
-6. **What happens if you call a value receiver function on a pointer?**
+6. **Pointer-এ call করা হলে Value receiver কিভাবে কাজ করে?**
 
-   - Go automatically dereferences the pointer, so the function works as expected.
+   * Go স্বয়ংক্রিয়ভাবে pointer dereference করে, তাই ফাংশনটি ঠিকভাবে কাজ করে।
 
-7. **What is the purpose of receiver functions?**
+7. **Receiver function-এর উদ্দেশ্য কী?**
 
-   - They enable object-oriented programming by associating methods with types.
+   * টাইপের সাথে মেথড সংযুক্ত করে object-oriented programming এর সুবিধা দেয়।
 
-8. **Can a receiver function modify the original object?**
+8. **Receiver function কি আসল অবজেক্ট পরিবর্তন করতে পারে?**
 
-   - Only if it uses a pointer receiver.
+   * শুধুমাত্র তখনই পারে, যদি pointer receiver ব্যবহার করা হয়।
 
-9. **What is the difference between a regular function and a receiver function?**
+9. **Regular function ও Receiver function-এর মধ্যে পার্থক্য কী?**
 
-   - A regular function is not associated with any type, while a receiver function is tied to a specific type.
+   * Regular function কোনো টাইপের সাথে যুক্ত নয়, কিন্তু Receiver function একটি নির্দিষ্ট টাইপের সাথে যুক্ত থাকে।
 
-10. **Can you use receiver functions with interfaces?**
-    - Yes, receiver functions are often used to implement interface methods.
+10. **Interfaces-এর সাথে কি Receiver function ব্যবহার করা যায়?**
+
+    * হ্যাঁ, Receiver function প্রায়ই Interface মেথড ইমপ্লিমেন্ট করতে ব্যবহৃত হয়।
 
 ## Example Output
 

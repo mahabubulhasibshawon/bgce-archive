@@ -1,6 +1,7 @@
 # Callback Functions
 
-If a function is passed as an argument to another function, then such types of functions are known as a Higher-Order function. This passing function as an argument is also known as a callback function or first-class function in the Go language.
+যদি একটি ফাংশনকে আরেকটি ফাংশনের আর্গুমেন্ট হিসেবে পাস করা হয়, তাহলে সেই ধরণের ফাংশনকে Higher-Order function বলা হয়। এইভাবে একটি ফাংশনকে আর্গুমেন্ট হিসেবে পাস করাকে Go তে callback function বা first-class function ও বলা হয়।
+
 
 ```go
 package main

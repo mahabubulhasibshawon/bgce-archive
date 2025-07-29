@@ -1,29 +1,29 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-19
 **Category:** e.g., interview-qa/topic_name
-**Tags:** [go, concurrency, channels]
+**Tags:** [go, varibales]
 ]
 
-# Variables are containers for storing data values
+# Variables: ডেটা মান সংরক্ষণের জন্য কন্টেইনার
 
-## In Go, there are two ways to declare a variable
+## Go তে ভেরিয়েবল ঘোষণা করার দুইটি পদ্ধতি আছে
 
-### 1. Use the var keyword, followed by variable name and type
+### ১. `var` কিওয়ার্ড ব্যবহার করে, তারপর ভেরিয়েবলের নাম এবং টাইপ
 
 ```go
 package main
 import ("fmt")
 
-var name = "John Doe" // Variable One
+var name = "John Doe" // ভেরিয়েবল এক
 
 func main() {
-  var fruit = "Apple" // Variable Two
+  var fruit = "Apple" // ভেরিয়েবল দুই
   fmt.Println(name)
   fmt.Println(fruit)
 }
 ```
 
-### 2. Use the := sign, followed by the variable value
+### ২. `:=` ব্যবহার করে ভেরিয়েবলের মান দিয়ে ডিক্লেয়ার করা
 
 ```go
 package main
@@ -39,9 +39,9 @@ func main() {
 
 ## Frequently Asked Questions (FAQs)
 
-### 1. How do you declare a constant variable in Go?
+### ১. Go তে কিভাবে কনস্ট্যান্ট ভেরিয়েবল ডিক্লেয়ার করবেন?
 
-**Answer:** Use the `const` keyword to declare a constant variable. Constants cannot be changed after they are declared.
+**উত্তর:** `const` কিওয়ার্ড ব্যবহার করে কনস্ট্যান্ট ঘোষণা করুন। একবার ঘোষণা করলে মান পরিবর্তন করা যায় না।
 
 ```go
 package main
@@ -53,9 +53,11 @@ func main() {
 }
 ```
 
-### 2. Can you declare multiple variables in a single line?
+---
 
-**Answer:** Yes, you can declare multiple variables in a single line using the `var` keyword or `:=` syntax.
+### ২. এক লাইনে একাধিক ভেরিয়েবল ডিক্লেয়ার করা যায়?
+
+**উত্তর:** হ্যাঁ, `var` অথবা `:=` ব্যবহার করে এক লাইনে একাধিক ভেরিয়েবল ডিক্লেয়ার করা যায়।
 
 ```go
 package main
@@ -67,9 +69,11 @@ func main() {
 }
 ```
 
-### 3. What is the zero value of a variable in Go?
+---
 
-**Answer:** Variables in Go are automatically assigned a zero value if not explicitly initialized.
+### ৩. Go তে ভেরিয়েবলের শূন্য (zero) মান কী?
+
+**উত্তর:** ভেরিয়েবল না দিলে Go অটোমেটিক শূন্য মান (zero value) দেয়।
 
 ```go
 package main
@@ -77,13 +81,15 @@ import ("fmt")
 
 func main() {
   var number int
-  fmt.Println(number) // Output: 0
+  fmt.Println(number) // আউটপুট: 0
 }
 ```
 
-### 4. How do you declare a global variable in Go?
+---
 
-**Answer:** Declare the variable outside of any function.
+### ৪. গ্লোবাল ভেরিয়েবল কিভাবে ডিক্লেয়ার করবেন?
+
+**উত্তর:** ফাংশনের বাইরে ভেরিয়েবল ডিক্লেয়ার করুন।
 
 ```go
 package main
@@ -96,9 +102,11 @@ func main() {
 }
 ```
 
-### 5. Can you reassign a value to a variable declared with `var`?
+---
 
-**Answer:** Yes, variables declared with `var` can be reassigned.
+### ৫. `var` দিয়ে ডিক্লেয়ার করা ভেরিয়েবলের মান পরিবর্তন করা যায়?
+
+**উত্তর:** হ্যাঁ, `var` ভেরিয়েবল পুনরায় মান পেতে পারে।
 
 ```go
 package main
@@ -111,20 +119,24 @@ func main() {
 }
 ```
 
-### 6. What happens if you declare a variable but do not use it?
+---
 
-**Answer:** Go does not allow unused variables and will throw a compile-time error.
+### ৬. যদি ভেরিয়েবল ডিক্লেয়ার করি কিন্তু ব্যবহার না করি তাহলে কী হয়?
+
+**উত্তর:** Go অপ্রয়োজনীয় ভেরিয়েবল অনুমোদন করে না, কম্পাইল টাইমে এরর দিবে।
 
 ```go
 package main
 func main() {
-  var unusedVar = 10 // This will cause an error
+  var unusedVar = 10 // এরর হবে কারণ ব্যবহার হয়নি
 }
 ```
 
-### 7. How do you declare a variable with a specific type?
+---
 
-**Answer:** Use the `var` keyword followed by the type.
+### ৭. নির্দিষ্ট টাইপ দিয়ে ভেরিয়েবল কিভাবে ডিক্লেয়ার করবেন?
+
+**উত্তর:** `var` কিওয়ার্ডের পরে টাইপ উল্লেখ করুন।
 
 ```go
 package main
@@ -136,9 +148,11 @@ func main() {
 }
 ```
 
-### 8. Can you declare a variable without initializing it?
+---
 
-**Answer:** Yes, but it will have a zero value.
+### ৮. ভেরিয়েবল ডিক্লেয়ার করে কিন্তু ইনিশিয়ালাইজ না করলে কী হয়?
+
+**উত্তর:** হবে, কিন্তু ভেরিয়েবল শূন্য মান পাবে।
 
 ```go
 package main
@@ -146,13 +160,15 @@ import ("fmt")
 
 func main() {
   var name string
-  fmt.Println(name) // Output: ""
+  fmt.Println(name) // আউটপুট: ""
 }
 ```
 
-### 9. How do you declare a variable in a block?
+---
 
-**Answer:** Use the `var` keyword inside a block.
+### ৯. ব্লকে ভেরিয়েবল কিভাবে ডিক্লেয়ার করবেন?
+
+**উত্তর:** ব্লকের মধ্যে `var` ব্যবহার করুন।
 
 ```go
 package main
@@ -167,17 +183,22 @@ func main() {
 }
 ```
 
-### 10. What is the difference between `var` and `:=`?
+---
 
-**Answer:** `var` can be used globally and allows explicit type declaration, while `:=` is shorthand for local variable declaration and type inference.
+### ১০. `var` এবং `:=` এর মধ্যে পার্থক্য কী?
+
+**উত্তর:**
+
+* `var` গ্লোবাল বা লোকাল উভয় ক্ষেত্রেই ব্যবহার হয় এবং স্পষ্ট টাইপ উল্লেখ করা যায়।
+* `:=` শুধুমাত্র লোকাল ভেরিয়েবল জন্য শর্টহ্যান্ড, টাইপ ইনফারেন্স হয়।
 
 ```go
 package main
 import ("fmt")
 
 func main() {
-  var name string = "John" // Explicit type
-  age := 30 // Type inferred
+  var name string = "John" // স্পষ্ট টাইপ
+  age := 30 // টাইপ ইনফারেন্স
   fmt.Println(name, age)
 }
 ```

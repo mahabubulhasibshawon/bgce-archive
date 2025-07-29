@@ -1,26 +1,30 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-19
 **Category:** interview-qa/operators
 **Tags:** [go, operators, arithmetic, assignment]
 ]
 
-# Operators are used to perform operations on variables and values
+# Operators
 
-## Arithmetic Operators
+**Operators** ব্যবহার করে ভেরিয়েবল ও মানের উপর গণনা বা কাজ করা হয়।
 
-### 1. Addition: The + operator adds two operands. For example, x+y.
+---
 
-### 2. Subtraction: The - operator subtracts two operands. For example, x-y.
+## Arithmetic Operators (গাণিতিক অপারেটরস)
 
-### 3. Multiplication: The * operator multiplies two operands. For example, x*y.
+### 1. Addition (`+`): দুইটি মান যোগ করে। যেমন: `x + y`
 
-### 4. Division: The / operator divides the first operand by the second. For example, x/y.
+### 2. Subtraction (`-`): একটি মান থেকে অন্যটি বিয়োগ করে। যেমন: `x - y`
 
-### 5. Modulus: Returns the division remainder
+### 3. Multiplication (`*`): দুইটি মান গুণ করে। যেমন: `x * y`
 
-### 6. Increment: The ++ Increases the value of a variable by 1
+### 4. Division (`/`): প্রথম মানটিকে দ্বিতীয় মান দিয়ে ভাগ করে। যেমন: `x / y`
 
-### 7. Decrement: The -- Decreases the value of a variable by 1
+### 5. Modulus (`%`): ভাগফলের অবশিষ্ট মান রিটার্ন করে।
+
+### 6. Increment (`++`): ভেরিয়েবলের মান ১ করে বাড়ায়।
+
+### 7. Decrement (`--`): ভেরিয়েবলের মান ১ করে কমায়।
 
 ```go
 package main
@@ -35,48 +39,52 @@ func main() {
 }
 ```
 
-### Increment
+### Increment (বৃদ্ধি করা)
 
 ```go
 package main
 import ("fmt")
 
 func main() {
-  x:= 10
-  x++ // Add one new value (increment)
+  x := 10
+  x++ // ১ যোগ করা হলো
   fmt.Println(x)
 }
 ```
 
-### Decrement
+### Decrement (হ্রাস করা)
 
 ```go
 package main
 import ("fmt")
 
 func main() {
-  x:= 10
-  x-- // Remove one new value (decrement)
+  x := 10
+  x-- // ১ কমানো হলো
   fmt.Println(x)
 }
 ```
 
-## Assignment Operators
+---
 
-### Assignment operators are used to assign values to variables.
+## Assignment Operators (অ্যাসাইনমেন্ট অপারেটরস)
 
-| Operator | Example | Same As    |
+ভেরিয়েবলে মান অ্যাসাইন বা সেট করতে ব্যবহার হয়।
+
+| Operator | Example | অর্থ একই   |
 | -------- | ------- | ---------- |
-| =        | x = 5   | x = 5      |
+| =        | x = 5   | x কে ৫ দাও |
 | +=       | x += 3  | x = x + 3  |
 | -=       | x -= 3  | x = x - 3  |
 | \*=      | x \*= 3 | x = x \* 3 |
 | /=       | x /= 3  | x = x / 3  |
 | %=       | x %= 3  | x = x % 3  |
 
-## Questions and Examples
+---
 
-### 1. Create a variable named `lgNumber`, store 1000 as a value, and perform various operations.
+## প্রশ্নোত্তর ও উদাহরণ
+
+### 1. `lgNumber` নামের একটি ভেরিয়েবল তৈরি করে 1000 সেট করে বিভিন্ন অপারেশন দেখাও।
 
 ```go
 package main
@@ -103,11 +111,15 @@ func main() {
 }
 ```
 
-## Frequently Asked Questions
+---
 
-### 1. How do you perform addition and subtraction in Go?
+## Frequently Asked Questions 
 
-**Answer:** Use the `+` operator for addition and `-` for subtraction.
+---
+
+### 1. Go-তে কীভাবে যোগ ও বিয়োগ করবো?
+
+**উত্তর:** `+` যোগ করার জন্য, `-` বিয়োগ করার জন্য।
 
 ```go
 package main
@@ -115,27 +127,31 @@ import "fmt"
 
 func main() {
     a, b := 10, 5
-    fmt.Println("Addition:", a+b) // 15
-    fmt.Println("Subtraction:", a-b) // 5
+    fmt.Println("Addition:", a + b)      // 15
+    fmt.Println("Subtraction:", a - b)   // 5
 }
 ```
 
-### 2. How do you calculate the remainder of a division in Go?
+---
 
-**Answer:** Use the `%` operator for modulus.
+### 2. Go-তে ভাগফলের বাকি (remainder) কিভাবে পাওয়া যায়?
+
+**উত্তর:** `%` অপারেটর ব্যবহার করে।
 
 ```go
 package main
 import "fmt"
 
 func main() {
-    fmt.Println("Remainder:", 10%3) // 1
+    fmt.Println("Remainder:", 10 % 3) // 1
 }
 ```
 
-### 3. Can you increment a variable in Go?
+---
 
-**Answer:** Yes, use `++` to increment a variable by 1.
+### 3. Go-তে কীভাবে ভেরিয়েবল ইনক্রিমেন্ট করব?
+
+**উত্তর:** `++` ব্যবহার করে মান ১ করে বাড়ানো যায়।
 
 ```go
 package main
@@ -148,9 +164,11 @@ func main() {
 }
 ```
 
-### 4. How do you assign and add a value to a variable in Go?
+---
 
-**Answer:** Use the `+=` operator.
+### 4. কোনো ভেরিয়েবলে মান যোগ করে কীভাবে সেট করব?
+
+**উত্তর:** `+=` ব্যবহার করা যায়।
 
 ```go
 package main
@@ -163,9 +181,11 @@ func main() {
 }
 ```
 
-### 5. How do you multiply and assign a value to a variable in Go?
+---
 
-**Answer:** Use the `*=` operator.
+### 5. গুণ করে কীভাবে মান সেট করব?
+
+**উত্তর:** `*=` ব্যবহার করে।
 
 ```go
 package main
@@ -178,9 +198,11 @@ func main() {
 }
 ```
 
-### 6. How do you divide and assign a value to a variable in Go?
+---
 
-**Answer:** Use the `/=` operator.
+### 6. ভাগ করে মান অ্যাসাইন করবো কীভাবে?
+
+**উত্তর:** `/=` ব্যবহার করতে হবে।
 
 ```go
 package main
@@ -193,9 +215,11 @@ func main() {
 }
 ```
 
-### 7. How do you decrement a variable in Go?
+---
 
-**Answer:** Use `--` to decrement a variable by 1.
+### 7. কীভাবে ডিক্রিমেন্ট করব?
+
+**উত্তর:** `--` দিয়ে ১ করে কমানো যায়।
 
 ```go
 package main
@@ -208,9 +232,11 @@ func main() {
 }
 ```
 
-### 8. How do you perform multiple arithmetic operations in one line?
+---
 
-**Answer:** Combine operators in a single expression.
+### 8. এক লাইনে একাধিক গাণিতিক অপারেশন কীভাবে করব?
+
+**উত্তর:** এক্সপ্রেশন ব্যবহার করেই করা যায়।
 
 ```go
 package main
@@ -222,9 +248,11 @@ func main() {
 }
 ```
 
-### 9. How do you check if a number is even or odd in Go?
+---
 
-**Answer:** Use the modulus operator `%`.
+### 9. কোনো সংখ্যা জোড় না বিজোড় তা কীভাবে বের করব?
+
+**উত্তর:** `% 2 == 0` হলে জোড়, না হলে বিজোড়।
 
 ```go
 package main
@@ -232,7 +260,7 @@ import "fmt"
 
 func main() {
     num := 7
-    if num%2 == 0 {
+    if num % 2 == 0 {
         fmt.Println("Even")
     } else {
         fmt.Println("Odd")
@@ -240,9 +268,11 @@ func main() {
 }
 ```
 
-### 10. How do you swap two numbers without using a third variable in Go?
+---
 
-**Answer:** Use arithmetic operations.
+### 10. তৃতীয় কোনো ভেরিয়েবল ছাড়াই দুটি সংখ্যা কীভাবে swap করব?
+
+**উত্তর:** গাণিতিক অপারেশন ব্যবহার করে।
 
 ```go
 package main

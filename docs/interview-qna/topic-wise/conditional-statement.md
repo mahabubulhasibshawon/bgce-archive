@@ -1,16 +1,18 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-19
 **Category:** interview-qa/conditional-statements
 **Tags:** [go, conditional-statements, if-else]
 ]
 
-## Go Conditions
+---
 
-### Conditional statements allow us to control the structure of our program.
+## Go শর্ত (Conditions)
 
-### There are different ways by which we can control the flow of our program, (If, else if, else) are one of them.
+### শর্তভিত্তিক স্টেটমেন্ট আমাদের প্রোগ্রামের গঠন নিয়ন্ত্রণ করতে সাহায্য করে।
 
-### (If, else if, else) statments allow us to make "decisions" while our program is running, They're also called (conditional statments) in programming.
+### প্রোগ্রামের প্রবাহ নিয়ন্ত্রণ করার বিভিন্ন উপায় আছে, (if, else if, else) তাদের অন্যতম।
+
+### (if, else if, else) স্টেটমেন্টগুলো আমাদের প্রোগ্রাম চলাকালীন "সিদ্ধান্ত" নিতে সাহায্য করে, প্রোগ্রামিং-এ এগুলোকে (conditional statements) ও বলা হয়।
 
 ```go
     // Sudo Syntax
@@ -36,20 +38,20 @@ func main() {
 
 ## Frequently Asked Questions (FAQs)
 
-### 1. **What is the syntax of an if-else statement in Go?**
+### 1. **Go-তে if-else স্টেটমেন্টের সিনট্যাক্স কী?**
 
-**Answer:**
-The syntax of an if-else statement in Go is as follows:
+**উত্তর:**
+Go-তে if-else স্টেটমেন্টের সিনট্যাক্স নিচের মতো:
 
 ```go
 if condition {
-    // code to execute if condition is true
+    // যদি condition সত্য হয় তবে এই কোড চলবে
 } else {
-    // code to execute if condition is false
+    // যদি condition মিথ্যা হয় তবে এই কোড চলবে
 }
 ```
 
-**Example:**
+**উদাহরণ:**
 
 ```go
 package main
@@ -65,11 +67,14 @@ func main() {
 }
 ```
 
-### 2. **Can we use an if statement without an else block?**
+---
 
-**Answer:**
-Yes, an if statement can be used without an else block.
-**Example:**
+### 2. **আমরা কি else ছাড়াই if স্টেটমেন্ট ব্যবহার করতে পারি?**
+
+**উত্তর:**
+হ্যাঁ, শুধুমাত্র if স্টেটমেন্টও ব্যবহার করা যায়।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -83,11 +88,14 @@ func main() {
 }
 ```
 
-### 3. **What is an else-if ladder in Go?**
+---
 
-**Answer:**
-An else-if ladder is used to check multiple conditions sequentially.
-**Example:**
+### 3. **Go-তে else-if ladder কী?**
+
+**উত্তর:**
+else-if ladder ব্যবহার করা হয় একাধিক condition একে একে যাচাই করতে।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -105,11 +113,14 @@ func main() {
 }
 ```
 
-### 4. **How do you use a short statement in an if condition?**
+---
 
-**Answer:**
-A short statement can be used to initialize a variable within an if condition.
-**Example:**
+### 4. **if স্টেটমেন্টে short statement কীভাবে ব্যবহার করা হয়?**
+
+**উত্তর:**
+short statement ব্যবহার করে আমরা একই লাইনে ভ্যারিয়েবল ডিক্লেয়ার ও condition চেক করতে পারি।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -122,11 +133,14 @@ func main() {
 }
 ```
 
-### 5. **Can we nest if-else statements in Go?**
+---
 
-**Answer:**
-Yes, if-else statements can be nested.
-**Example:**
+### 5. **Go-তে nested if-else স্টেটমেন্ট ব্যবহার করা যায় কি?**
+
+**উত্তর:**
+হ্যাঁ, একটির ভিতরে আরেকটি if-else ব্যবহার করা যায়।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -146,11 +160,14 @@ func main() {
 }
 ```
 
-### 6. **What is the difference between if-else and switch statements?**
+---
 
-**Answer:**
-If-else is used for conditional branching, while switch is used for selecting one of many blocks of code.
-**Example:**
+### 6. **if-else এবং switch স্টেটমেন্টের মধ্যে পার্থক্য কী?**
+
+**উত্তর:**
+if-else ব্যবহার করা হয় শর্তভিত্তিক সিদ্ধান্তের জন্য, আর switch ব্যবহার করা হয় একাধিক ব্লকের মধ্যে একটি নির্দিষ্ট ব্লক নির্বাচন করার জন্য।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -171,11 +188,14 @@ func main() {
 }
 ```
 
-### 7. **How do you handle multiple conditions in a single if statement?**
+---
 
-**Answer:**
-Logical operators like `&&` (AND) and `||` (OR) can be used to handle multiple conditions.
-**Example:**
+### 7. **একই if স্টেটমেন্টে একাধিক condition কীভাবে চেক করা যায়?**
+
+**উত্তর:**
+`&&` (AND) এবং `||` (OR) লজিক্যাল অপারেটর ব্যবহার করে একাধিক condition চেক করা যায়।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -189,24 +209,30 @@ func main() {
 }
 ```
 
-### 8. **What happens if the condition in an if statement is not a boolean?**
+---
 
-**Answer:**
-In Go, the condition in an if statement must evaluate to a boolean. Otherwise, it will result in a compilation error.
-**Example:**
+### 8. **যদি if স্টেটমেন্টের condition boolean না হয়, তাহলে কী হয়?**
+
+**উত্তর:**
+Go-তে if condition অবশ্যই একটি boolean হতে হবে। না হলে compile-time error হবে।
+
+**উদাহরণ:**
 
 ```go
-// This will cause a compilation error
+// এটি compile error দেবে
 // if 10 {
 //     fmt.Println("Invalid Condition")
 // }
 ```
 
-### 9. **Can we use a function call in an if condition?**
+---
 
-**Answer:**
-Yes, a function call can be used in an if condition.
-**Example:**
+### 9. **if condition-এ কি ফাংশন কল ব্যবহার করা যায়?**
+
+**উত্তর:**
+হ্যাঁ, একটি ফাংশন কল if স্টেটমেন্টে ব্যবহার করা যায়।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -223,11 +249,14 @@ func main() {
 }
 ```
 
-### 10. **How do you use if-else with user input?**
+---
 
-**Answer:**
-You can use the `fmt.Scan` function to take user input and use it in an if-else statement.
-**Example:**
+### 10. **User input-এর সাথে if-else কীভাবে ব্যবহার করব?**
+
+**উত্তর:**
+`fmt.Scan` ব্যবহার করে ইউজারের ইনপুট নিয়ে if-else স্টেটমেন্টে তা ব্যবহার করা যায়।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -244,3 +273,5 @@ func main() {
 	}
 }
 ```
+
+---

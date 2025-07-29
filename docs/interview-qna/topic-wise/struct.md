@@ -1,4 +1,4 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-19
 **Category:** e.g., interview-qa/topic_name
 **Tags:** [go, concurrency, channels]
@@ -6,7 +6,7 @@
 
 # Structs (Structures)
 
-A struct is used to create a collection of members of different data types, into a single variable.
+একটি struct ব্যবহার করে বিভিন্ন ডেটা টাইপের একাধিক সদস্যকে একটি একক ভেরিয়েবলের মধ্যে সংরক্ষণ করা যায়।
 
 ```go
 package main
@@ -34,11 +34,11 @@ func main() {
 
 ## Frequently Asked Questions (FAQ)
 
-### 1. What is a struct in Go?
+### ১. Go-তে struct কী?
 
-**Answer:** A struct is a composite data type in Go that groups together variables under a single name. These variables can be of different types.
+**উত্তর:** struct হলো একটি composite data type যা বিভিন্ন টাইপের ভেরিয়েবলকে একটি নামের অধীনে গ্রুপ করে।
 
-**Example:**
+**উদাহরণ:**
 
 ```go
 type Person struct {
@@ -52,11 +52,13 @@ func main() {
 }
 ```
 
-### 2. How do you define and initialize a struct in Go?
+---
 
-**Answer:** You can define a struct using the `type` keyword and initialize it using a struct literal.
+### ২. Go-তে struct কীভাবে define ও initialize করবেন?
 
-**Example:**
+**উত্তর:** `type` কিওয়ার্ড ব্যবহার করে struct define করা হয় এবং struct literal দিয়ে initialize করা যায়।
+
+**উদাহরণ:**
 
 ```go
 type Car struct {
@@ -70,11 +72,13 @@ func main() {
 }
 ```
 
-### 3. Can you create an anonymous struct in Go?
+---
 
-**Answer:** Yes, you can create an anonymous struct without defining a named type.
+### ৩. Go-তে কি anonymous struct তৈরি করা যায়?
 
-**Example:**
+**উত্তর:** হ্যাঁ, আপনি একটি unnamed struct তৈরি করতে পারেন।
+
+**উদাহরণ:**
 
 ```go
 func main() {
@@ -89,11 +93,13 @@ func main() {
 }
 ```
 
-### 4. How do you access and modify struct fields in Go?
+---
 
-**Answer:** You can access and modify struct fields using the dot `.` operator.
+### ৪. Go-তে struct এর fields কীভাবে access ও modify করবেন?
 
-**Example:**
+**উত্তর:** dot (`.`) অপারেটর ব্যবহার করে struct এর field access ও পরিবর্তন করা যায়।
+
+**উদাহরণ:**
 
 ```go
 type Book struct {
@@ -108,11 +114,13 @@ func main() {
 }
 ```
 
-### 5. Can structs have methods in Go?
+---
 
-**Answer:** Yes, you can define methods for structs.
+### ৫. Go-তে struct এর জন্য কি method তৈরি করা যায়?
 
-**Example:**
+**উত্তর:** হ্যাঁ, struct এর জন্য আপনি method তৈরি করতে পারেন।
+
+**উদাহরণ:**
 
 ```go
 type Rectangle struct {
@@ -129,11 +137,13 @@ func main() {
 }
 ```
 
-### 6. What is the difference between value and pointer receivers in struct methods?
+---
 
-**Answer:** Value receivers operate on a copy of the struct, while pointer receivers operate on the original struct.
+### ৬. struct method-এ value ও pointer receiver-এর মধ্যে পার্থক্য কী?
 
-**Example:**
+**উত্তর:** value receiver struct-এর কপি নিয়ে কাজ করে, আর pointer receiver মূল struct-এ পরিবর্তন করে।
+
+**উদাহরণ:**
 
 ```go
 type Counter struct {
@@ -151,11 +161,13 @@ func main() {
 }
 ```
 
-### 7. Can structs embed other structs in Go?
+---
 
-**Answer:** Yes, Go supports struct embedding for composition.
+### ৭. Go-তে struct এর ভিতরে অন্য struct রাখা যায় কি?
 
-**Example:**
+**উত্তর:** হ্যাঁ, struct embedding এর মাধ্যমে আপনি একটি struct-এর ভিতরে আরেকটি struct রাখতে পারেন।
+
+**উদাহরণ:**
 
 ```go
 type Address struct {
@@ -173,11 +185,13 @@ func main() {
 }
 ```
 
-### 8. How do you compare two structs in Go?
+---
 
-**Answer:** You can compare structs using the `==` operator if all fields are comparable.
+### ৮. Go-তে দুটি struct কীভাবে তুলনা করবেন?
 
-**Example:**
+**উত্তর:** যদি সব field comparable হয়, তাহলে `==` অপারেটর ব্যবহার করে তুলনা করা যায়।
+
+**উদাহরণ:**
 
 ```go
 type Point struct {
@@ -191,11 +205,13 @@ func main() {
 }
 ```
 
-### 9. Can you use structs as map keys in Go?
+---
 
-**Answer:** Yes, structs can be used as map keys if all their fields are comparable.
+### ৯. Go-তে struct কি map-এর key হিসেবে ব্যবহার করা যায়?
 
-**Example:**
+**উত্তর:** হ্যাঁ, যদি struct-এর সব field comparable হয়, তাহলে struct কে map-এর key হিসেবে ব্যবহার করা যায়।
+
+**উদাহরণ:**
 
 ```go
 type Point struct {
@@ -209,11 +225,13 @@ func main() {
 }
 ```
 
-### 10. How do you iterate over struct fields in Go?
+---
 
-**Answer:** You can use the `reflect` package to iterate over struct fields.
+### ১০. Go-তে struct-এর field গুলোতে কীভাবে iteration করবেন?
 
-**Example:**
+**উত্তর:** `reflect` প্যাকেজ ব্যবহার করে struct-এর ফিল্ড গুলোর উপর iteration করা যায়।
+
+**উদাহরণ:**
 
 ```go
 import (

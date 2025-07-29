@@ -1,15 +1,16 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-19
 **Category:** e.g., interview-qa/topic_name
 **Tags:** [go, concurrency, channels]
 ]
 
-# While Loop
 
-## Unlike other programming languages, Go doesn't have a dedicated keyword for a while loop. However, we can use the for loop to perform the functionality of a while loop.
+# While Loop 
+
+## অন্যান্য প্রোগ্রামিং ভাষার মতো Go-তে `while` লুপের জন্য আলাদা কোনো কীওয়ার্ড নেই। তবে আমরা `for` লুপ ব্যবহার করে `while` লুপের কাজ করতে পারি।
 
 ```go
-// Program to print numbers between 0 and 10
+// 0 থেকে 10 পর্যন্ত সংখ্যা প্রিন্ট করার প্রোগ্রাম
 package main
 import ("fmt")
 
@@ -25,9 +26,9 @@ func main() {
 
 ## Frequently Asked Questions
 
-### 1. How can we implement an infinite loop in Go?
+### 1. Go-তে কীভাবে infinite loop তৈরি করা যায়?
 
-**Answer:** In Go, an infinite loop can be implemented using the `for` loop without any condition.
+**উত্তর:** Go-তে শর্ত ছাড়া `for` লুপ ব্যবহার করে একটি infinite loop তৈরি করা যায়।
 
 ```go
 package main
@@ -40,9 +41,11 @@ func main() {
 }
 ```
 
-### 2. How do you break out of a loop in Go?
+---
 
-**Answer:** Use the `break` statement to exit a loop prematurely.
+### 2. Go-তে কীভাবে loop থেকে বের হওয়া যায়?
+
+**উত্তর:** `break` স্টেটমেন্ট ব্যবহার করে loop মাঝপথে থামানো যায়।
 
 ```go
 package main
@@ -58,9 +61,11 @@ func main() {
 }
 ```
 
-### 3. How do you skip an iteration in a loop in Go?
+---
 
-**Answer:** Use the `continue` statement to skip the current iteration and move to the next one.
+### 3. Go-তে কীভাবে কোনো iteration স্কিপ করা যায়?
+
+**উত্তর:** `continue` স্টেটমেন্ট ব্যবহার করে বর্তমান iteration বাদ দিয়ে পরের iteration-এ যাওয়া যায়।
 
 ```go
 package main
@@ -76,9 +81,11 @@ func main() {
 }
 ```
 
-### 4. Can we use labels with loops in Go?
+---
 
-**Answer:** Yes, labels can be used to control nested loops.
+### 4. Go-তে কী loop-এর সাথে label ব্যবহার করা যায়?
+
+**উত্তর:** হ্যাঁ, nested loops নিয়ন্ত্রণ করতে label ব্যবহার করা যায়।
 
 ```go
 package main
@@ -97,9 +104,11 @@ OuterLoop:
 }
 ```
 
-### 5. How do you implement a do-while loop in Go?
+---
 
-**Answer:** Go does not have a `do-while` loop, but it can be simulated using a `for` loop.
+### 5. Go-তে `do-while` লুপ কীভাবে তৈরি করব?
+
+**উত্তর:** Go-তে `do-while` নেই, তবে `for` লুপ ব্যবহার করে একই রকম আচরণ তৈরি করা যায়।
 
 ```go
 package main
@@ -117,9 +126,11 @@ func main() {
 }
 ```
 
-### 6. How can you iterate over a slice in Go?
+---
 
-**Answer:** Use the `range` keyword to iterate over a slice.
+### 6. Go-তে কীভাবে slice-এর উপর iterate করা যায়?
+
+**উত্তর:** `range` কীওয়ার্ড ব্যবহার করে slice-এর উপর loop চালানো যায়।
 
 ```go
 package main
@@ -133,9 +144,11 @@ func main() {
 }
 ```
 
-### 7. How do you iterate over a map in Go?
+---
 
-**Answer:** Use the `range` keyword to iterate over a map.
+### 7. Go-তে কীভাবে map-এর উপর iterate করব?
+
+**উত্তর:** `range` কীওয়ার্ড ব্যবহার করে map-এর key ও value-তে loop চালানো যায়।
 
 ```go
 package main
@@ -149,9 +162,11 @@ func main() {
 }
 ```
 
-### 8. How do you iterate over a string in Go?
+---
 
-**Answer:** Use the `range` keyword to iterate over a string.
+### 8. Go-তে কীভাবে string-এর উপর iterate করব?
+
+**উত্তর:** `range` ব্যবহার করে string-এর প্রতিটি character-এর উপর loop চালানো যায়।
 
 ```go
 package main
@@ -165,9 +180,11 @@ func main() {
 }
 ```
 
-### 9. How do you use a loop to calculate the factorial of a number in Go?
+---
 
-**Answer:** Use a `for` loop to calculate the factorial.
+### 9. Go-তে লুপ ব্যবহার করে কীভাবে একটি সংখ্যার factorial বের করব?
+
+**উত্তর:** `for` লুপ ব্যবহার করে সহজেই factorial হিসাব করা যায়।
 
 ```go
 package main
@@ -183,9 +200,11 @@ func main() {
 }
 ```
 
-### 10. How do you use a loop to reverse a slice in Go?
+---
 
-**Answer:** Use a `for` loop to swap elements in the slice.
+### 10. Go-তে কীভাবে লুপ ব্যবহার করে একটি slice রিভার্স করব?
+
+**উত্তর:** `for` লুপ ব্যবহার করে slice-এর উপাদানগুলো swap করে রিভার্স করা যায়।
 
 ```go
 package main

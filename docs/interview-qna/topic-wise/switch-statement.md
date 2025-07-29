@@ -1,12 +1,12 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-19
-**Category:** e.g., interview-qa/topic_name
-**Tags:** [go, concurrency, channels]
+**Category:** e.g., interview-qa/switch-statement
+**Tags:** [go, switch-statement]
 ]
 
 # The switch Statement
 
-## The switch statement allows us to execute one code block among many alternatives.
+## switch স্টেটমেন্ট আমাদের অনেক বিকল্পের মধ্যে একটি কোড ব্লক চালানোর অনুমতি দেয়।
 
 ```go
 package main
@@ -38,11 +38,11 @@ func main() {
 
 ## Frequently Asked Questions
 
-### 1. What is a `switch` statement in Go?
+### ১. Go তে `switch` স্টেটমেন্ট কী?
 
-**Answer:** A `switch` statement is used to select one of many code blocks to execute. It is an alternative to using multiple `if-else` statements.
+**উত্তর:** `switch` স্টেটমেন্ট অনেক কোড ব্লকের মধ্যে থেকে একটি বেছে নিয়ে চালাতে ব্যবহৃত হয়। এটি একাধিক `if-else` স্টেটমেন্টের বিকল্প।
 
-**Example:**
+**উদাহরণ:**
 
 ```go
 package main
@@ -63,11 +63,13 @@ func main() {
 }
 ```
 
-### 2. Can we use multiple values in a single `case`?
+---
 
-**Answer:** Yes, multiple values can be grouped in a single `case`.
+### ২. একক `case`-এ কি একাধিক মান ব্যবহার করা যায়?
 
-**Example:**
+**উত্তর:** হ্যাঁ, একাধিক মান একই `case` এ গ্রুপ করা যায়।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -84,15 +86,19 @@ func main() {
 }
 ```
 
-### 3. Is `break` required in Go's `switch` statement?
+---
 
-**Answer:** No, `break` is not required as Go automatically breaks out of the `switch` after executing a `case`.
+### ৩. Go তে `switch`-এ `break` প্রয়োজন কি?
 
-### 4. How to use `fallthrough` in a `switch` statement?
+**উত্তর:** না, Go স্বয়ংক্রিয়ভাবে প্রতিটি `case` এর পরে ব্রেক করে, তাই `break` দিতে হয় না।
 
-**Answer:** The `fallthrough` keyword forces the execution of the next `case` even if the condition does not match.
+---
 
-**Example:**
+### ৪. `fallthrough` কীভাবে ব্যবহার করবেন?
+
+**উত্তর:** `fallthrough` ব্যবহার করলে পরবর্তী `case` কোডও নির্বাহ হবে, যদিও শর্ত মিলবে না।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -112,11 +118,13 @@ func main() {
 }
 ```
 
-### 5. Can `switch` work without an expression?
+---
 
-**Answer:** Yes, a `switch` can work without an expression, making it similar to a series of `if-else` statements.
+### ৫. `switch` কি এক্সপ্রেশন ছাড়াও ব্যবহার করা যায়?
 
-**Example:**
+**উত্তর:** হ্যাঁ, `switch` এক্সপ্রেশন ছাড়াই ব্যবহার করা যায়, যা একাধিক `if-else` এর মত কাজ করে।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -135,11 +143,13 @@ func main() {
 }
 ```
 
-### 6. Can we use a `switch` statement with strings?
+---
 
-**Answer:** Yes, `switch` can be used with strings.
+### ৬. `switch`-এ কি string ব্যবহার করা যায়?
 
-**Example:**
+**উত্তর:** হ্যাঁ, `switch` স্টেটমেন্টে string ব্যবহার করা যায়।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -160,11 +170,13 @@ func main() {
 }
 ```
 
-### 7. Can `switch` handle type assertions?
+---
 
-**Answer:** Yes, `switch` can be used to handle type assertions.
+### ৭. `switch` কি টাইপ অ্যাসার্শন হ্যান্ডেল করতে পারে?
 
-**Example:**
+**উত্তর:** হ্যাঁ, `switch` টাইপ অ্যাসার্শন হ্যান্ডেল করতে পারে।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -183,11 +195,13 @@ func main() {
 }
 ```
 
-### 8. Can `switch` be used with functions?
+---
 
-**Answer:** Yes, you can use a function's return value in a `switch` statement.
+### ৮. `switch`-এ কি ফাংশনের রিটার্ন ভ্যালু ব্যবহার করা যায়?
 
-**Example:**
+**উত্তর:** হ্যাঁ, আপনি ফাংশনের রিটার্ন ভ্যালুকে `switch` এ ব্যবহার করতে পারেন।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -211,11 +225,13 @@ func main() {
 }
 ```
 
-### 9. Can `switch` be nested?
+---
 
-**Answer:** Yes, `switch` statements can be nested.
+### ৯. `switch` কি নেস্টেড (অন্দরভুক্ত) হতে পারে?
 
-**Example:**
+**উত্তর:** হ্যাঁ, `switch` স্টেটমেন্ট নেস্টেড হতে পারে।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -238,11 +254,13 @@ func main() {
 }
 ```
 
-### 10. What happens if no `case` matches and there is no `default`?
+---
 
-**Answer:** If no `case` matches and there is no `default`, the `switch` statement does nothing.
+### ১০. যদি কোনো `case` ম্যাচ না করে এবং `default` না থাকে তাহলে কী হয়?
 
-**Example:**
+**উত্তর:** কোনো `case` ম্যাচ না করলে এবং `default` না থাকলে `switch` কিছুই করে না।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -256,6 +274,6 @@ func main() {
     case 2:
         fmt.Println("Two")
     }
-    // No output
+    // কোন আউটপুট হবে না
 }
 ```

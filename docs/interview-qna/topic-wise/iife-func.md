@@ -1,77 +1,89 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-22
 **Category:** interview-qa/Function Expressions
 **Tags:** [go, Function Expressions, Anonymous Functions ]
 ]
 
-### Function Expressions and Anonymous Functions in Go
+## Go-তে Function Expressions এবং Anonymous Functions
 
-In Go, functions can be treated as first-class citizens, meaning they can be assigned to variables, passed as arguments, or returned from other functions. These capabilities make Go flexible in terms of handling operations that require dynamic behavior.
+Go ভাষায় ফাংশনগুলোকে **first-class citizens** হিসেবে বিবেচনা করা হয়। অর্থাৎ, একটি ফাংশনকে:
 
-### Function Expressions
+* ভেরিয়েবলে সংরক্ষণ করা যায়,
+* আর্গুমেন্ট হিসেবে অন্য ফাংশনে পাঠানো যায়,
+* অন্য ফাংশন থেকে রিটার্ন করা যায়।
 
-A **function expression** is when you assign a function to a variable. This allows you to treat the function like any other value in Go, and invoke it using the variable name.
+এগুলো প্রোগ্রামে গতিশীল (dynamic) আচরণকে সহজ করে তোলে।
+
+---
+
+### 🔸 Function Expressions
+
+**Function Expression** হলো এমন একটি ফাংশন যা একটি ভেরিয়েবলে অ্যাসাইন করা হয়। এরপর সেই ভেরিয়েবল দিয়েই ফাংশনটি কল করা যায়।
 
 ```go
 package main
 import "fmt"
 
 func main() {
-    // Assigning a function to a variable
+    // ফাংশনকে ভেরিয়েবলে সংরক্ষণ করা
     add := func(a int, b int) int {
         return a + b
     }
 
-    // Using the variable to call the function
+    // ফাংশন কল করা ভেরিয়েবলের মাধ্যমে
     result := add(3, 4)
     fmt.Println("Sum:", result) // Output: Sum: 7
 }
 ```
 
-### Anonymous Functions
+---
 
-An **anonymous function** is a function that is defined without a name. These are often used for one-off tasks, such as callbacks or short-lived operations.
+### 🔸 Anonymous Functions
+
+**Anonymous Function** হলো এমন একটি ফাংশন যার কোনো নাম নেই। এটি সাধারণত অস্থায়ী (short-lived) কাজের জন্য ব্যবহৃত হয়।
 
 ```go
 package main
 import "fmt"
 
 func main() {
-    // Anonymous function without a name
+    // নামহীন (anonymous) ফাংশন, সঙ্গে সঙ্গে কল করা হচ্ছে
     func(message string) {
         fmt.Println(message)
     }("Hello, Go!") // Output: Hello, Go!
 }
 ```
 
-### Immediately Invoked Function Expressions (IIFE)
+---
 
-In Go, you can also define an anonymous function and immediately invoke it. This is useful for initializing values, performing a quick operation, or executing code that does not need to be reused.
+### 🔸 Immediately Invoked Function Expression (IIFE)
+
+IIFE হলো এমন একটি ফাংশন যা ডিফাইন করেই সঙ্গে সঙ্গে কল করা হয়। এটি সাধারণত ইনিশিয়ালাইজেশন বা একবারের কাজের জন্য ব্যবহৃত হয়।
 
 ```go
 package main
 import "fmt"
 
 func main() {
-    // Immediately Invoked Function Expression (IIFE)
     result := func(a int, b int) int {
         return a + b
-    }(3, 4) // Function is invoked immediately with the arguments
+    }(3, 4) // ফাংশন সঙ্গে সঙ্গে কল হচ্ছে
 
     fmt.Println("Sum:", result) // Output: Sum: 7
 }
 ```
 
-### More Examples
+---
 
-#### 1. Returning a Function from Another Function
+## ✅ আরও উদাহরণ
 
-You can return a function from another function, which can then be used later.
+### 1. ফাংশন রিটার্ন করে এমন ফাংশন
 
 ```go
 package main
 import "fmt"
 
+// multiply একটি ফাংশন রিটার্ন করে
 func multiply(factor int) func(int) int {
     return func(x int) int {
         return x * factor
@@ -79,16 +91,15 @@ func multiply(factor int) func(int) int {
 }
 
 func main() {
-    // Creating a multiplier function with factor 2
     multiplyByTwo := multiply(2)
     result := multiplyByTwo(5)
     fmt.Println("Multiplication Result:", result) // Output: 10
 }
 ```
 
-#### 2. Using Function Expressions with Map Operations
+---
 
-Function expressions can be used with map functions to process elements in collections.
+### 2. Function Expressions দিয়ে map-এর মতো অপারেশন
 
 ```go
 package main
@@ -96,7 +107,8 @@ import "fmt"
 
 func main() {
     numbers := []int{1, 2, 3, 4, 5}
-    // Using a function expression to map each element
+
+    // প্রতিটি আইটেমে অপারেশন করার জন্য function expression ব্যবহার
     doubledNumbers := mapFunc(numbers, func(x int) int {
         return x * 2
     })
@@ -113,65 +125,69 @@ func mapFunc(numbers []int, f func(int) int) []int {
 }
 ```
 
-### Interview Questions and Answers
+---
 
-#### 1. What are function expressions in Go, and how are they useful?
+## 💬 ইন্টারভিউ প্রশ্ন ও উত্তর
 
-**Answer:**
-A function expression is when a function is assigned to a variable. This allows you to treat functions as values and pass them around like other types, enabling dynamic behavior. For instance, you can pass functions as arguments, return them from other functions, and store them in data structures.
+### 1. **Go-তে Function Expression কী এবং এটি কী কাজে লাগে?**
 
-#### 2. What is an anonymous function in Go? Give an example.
+**উত্তর:**
+Function expression মানে হলো ফাংশনকে কোনো ভেরিয়েবলে সংরক্ষণ করা। এটি ফাংশনকে ভ্যালুর মতো ব্যবহার করার সুযোগ দেয়, যাতে আমরা ফাংশনকে প্যারামিটার হিসেবে পাঠাতে, রিটার্ন করতে এবং প্রয়োজনে সংরক্ষণ করতে পারি।
 
-**Answer:**
-An anonymous function is a function without a name. It can be used for quick, short-lived tasks where the function's name is not necessary. Here's an example of an anonymous function:
+---
+
+### 2. **Anonymous Function কী? উদাহরণ দাও।**
+
+**উত্তর:**
+Anonymous function হচ্ছে এমন ফাংশন যার কোনো নাম নেই। সাধারণত কমপ্লেক্স না এমন, অস্থায়ী কাজের জন্য ব্যবহার করা হয়।
+
+**উদাহরণ:**
 
 ```go
-package main
-import "fmt"
-
 func main() {
-    // Anonymous function used to print a message
     func(message string) {
         fmt.Println(message)
-    }("Hello, Go!") // Output: Hello, Go!
+    }("Hello, Go!")
 }
 ```
 
-#### 3. What is the difference between a function expression and a named function?
+---
 
-**Answer:**
-A named function has a specific name and can be called by that name. A function expression is an unnamed function assigned to a variable, and the function can be called using that variable. Function expressions offer more flexibility, as you can assign them to variables, pass them around, and invoke them in different contexts.
+### 3. **Function Expression আর Named Function-এর মধ্যে পার্থক্য কী?**
 
-#### 4. What is an Immediately Invoked Function Expression (IIFE) in Go?
+**উত্তর:**
 
-**Answer:**
-An Immediately Invoked Function Expression (IIFE) is a function that is defined and called immediately in one expression. This is useful for scenarios where you need to perform a quick operation without the need for a function name or reuse. Example:
+* **Named Function**: একটি নির্দিষ্ট নাম দিয়ে ডিফাইন করা হয়, যেটা ফাংশন কল করতে ব্যবহৃত হয়।
+* **Function Expression**: নামবিহীন ফাংশনকে একটি ভেরিয়েবলে অ্যাসাইন করে কল করা হয়।
+
+Function expressions বেশি flexible কারণ এগুলোকে ডাইনামিকভাবে পাস/রিটার্ন করা যায়।
+
+---
+
+### 4. **IIFE (Immediately Invoked Function Expression) কী?**
+
+**উত্তর:**
+IIFE এমন একটি ফাংশন যা ডিফাইন করেই সঙ্গে সঙ্গে এক্সিকিউট করা হয়। এটি একবারের কাজ বা প্রাথমিক কোনো ক্যালকুলেশনের জন্য খুব কার্যকর।
+
+**উদাহরণ:**
 
 ```go
-package main
-import "fmt"
-
-func main() {
-    // IIFE to perform an immediate calculation
-    result := func(a int, b int) int {
-        return a + b
-    }(3, 4) // Function is invoked immediately
-
-    fmt.Println("Sum:", result) // Output: Sum: 7
-}
+result := func(a int, b int) int {
+    return a + b
+}(3, 4)
+fmt.Println("Sum:", result)
 ```
 
-#### 5. How can you pass a function as an argument to another function in Go?
+---
 
-**Answer:**
-In Go, you can pass a function as an argument to another function by defining the function signature in the argument list. This allows you to treat the passed function as a value and invoke it within the receiving function.
+### 5. **Go-তে কীভাবে ফাংশনকে আর্গুমেন্ট হিসেবে পাঠানো যায়?**
 
-**Example:**
+**উত্তর:**
+Go-তে ফাংশনকে আর্গুমেন্ট হিসেবে পাঠানোর জন্য সেই ফাংশনের signature অনুযায়ী ফাংশন টাইপ ডিফাইন করতে হয়।
+
+**উদাহরণ:**
 
 ```go
-package main
-import "fmt"
-
 func applyOperation(a int, b int, operation func(int, int) int) int {
     return operation(a, b)
 }
@@ -181,7 +197,8 @@ func main() {
         return a + b
     }
 
-    result := applyOperation(3, 4, add) // Passing function as argument
-    fmt.Println("Sum:", result) // Output: Sum: 7
+    result := applyOperation(3, 4, add)
+    fmt.Println("Sum:", result)
 }
 ```
+

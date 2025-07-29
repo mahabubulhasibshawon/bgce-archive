@@ -1,47 +1,57 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-22
 **Category:** interview-qa/Variadic
 **Tags:** [go, Variadic Function]
 ]
 
-### Variadic Functions in Go
 
-A **variadic function** in Go is a function that can accept a variable number of arguments. You define a variadic function by placing `...` before the type in the function signature, which allows the function to accept multiple arguments of that type.
+# Go তে Variadic Functions
 
-### Example Code: Variadic Function
+**Variadic function** হলো এমন একটি ফাংশন যা যেকোনো সংখ্যক আর্গুমেন্ট গ্রহণ করতে পারে। ফাংশনের সিগনেচারে টাইপের আগে `...` বসিয়ে Variadic function ডিফাইন করা হয়, যা একই ধরনের একাধিক আর্গুমেন্ট গ্রহণের সুযোগ দেয়।
+
+---
+
+### উদাহরণ: Variadic Function
 
 ```go
 package main
 
-func print(number ...int) { // Variadic function to print numbers
-	for _, n := range number {
-		println(n) // Printing each number
+func print(numbers ...int) { // Variadic ফাংশন যা সংখ্যাগুলো প্রিন্ট করে
+	for _, n := range numbers {
+		println(n) // প্রতিটি সংখ্যা প্রিন্ট করা হচ্ছে
 	}
 }
 
 func main() {
-	print(1, 2, 3, 4, 5) // Calling the variadic function with multiple arguments
-	print(1, 2)           // Calling the variadic function with fewer arguments
-	print(1)              // Calling the variadic function with a single argument
-	print()               // Calling the variadic function with no arguments
+	print(1, 2, 3, 4, 5) // Variadic ফাংশনে একাধিক আর্গুমেন্ট পাঠানো
+	print(1, 2)           // কম আর্গুমেন্টসহ কল
+	print(1)              // একক আর্গুমেন্ট
+	print()               // কোন আর্গুমেন্ট না পাঠিয়ে কল
 }
 ```
 
-### Explanation:
+---
 
-- `print(number ...int)` is a variadic function, meaning it can accept any number of `int` values.
-- In the `main()` function, different sets of arguments are passed to `print()`:
-  - A set of 5 integers
-  - A set of 2 integers
-  - A single integer
-  - No arguments at all
+### ব্যাখ্যা:
 
-### More Explanation on Variadic Functions:
+* `print(numbers ...int)` একটি Variadic ফাংশন, যা যেকোনো সংখ্যক `int` মান নিতে পারে।
+* `main()` এ বিভিন্ন আর্গুমেন্ট সেট দিয়ে `print()` ফাংশন কল করা হয়েছে:
 
-- A variadic function works by collecting all the arguments passed into a slice.
-- You can pass a slice directly to a variadic function using `...`, which unpacks the slice into individual arguments.
+  * ৫টি সংখ্যা
+  * ২টি সংখ্যা
+  * ১টি সংখ্যা
+  * কোন সংখ্যা পাঠানো হয়নি
 
-### Example: Passing a Slice to a Variadic Function
+---
+
+### Variadic Functions সম্পর্কে আরো:
+
+* Variadic ফাংশনগুলো আসলে সব আর্গুমেন্টকে একটি slice হিসেবে ধরে।
+* slice-কে সরাসরি `...` ব্যবহার করে unpack করে Variadic ফাংশনে পাঠানো যায়।
+
+---
+
+### উদাহরণ: Slice পাঠানো Variadic Function এ
 
 ```go
 package main
@@ -54,23 +64,27 @@ func print(numbers ...int) {
 
 func main() {
 	nums := []int{10, 20, 30}
-	print(nums...) // Unpacking a slice and passing to the variadic function
+	print(nums...) // slice unpack করে পাঠানো
 }
 ```
 
-### Interview Questions and Answers
+---
 
-#### 1. What is the advantage of using variadic functions in Go?
+## Interview প্রশ্ন ও উত্তর
 
-**Answer:**
-Variadic functions allow for flexibility in function calls, enabling you to pass a varying number of arguments without needing to overload the function. This helps avoid writing multiple versions of the same function that differ only by the number of arguments they take.
+### ১. Go তে Variadic Function ব্যবহারের সুবিধা কী?
 
-#### 2. Can a variadic function accept multiple types of arguments?
+**উত্তর:**
+Variadic function ফাংশন কলকে ফ্লেক্সিবল করে তোলে। একাধিক ভিন্ন সংখ্যক আর্গুমেন্ট সহজে পাঠানো যায়, আলাদা আলাদা ফাংশন বানানোর প্রয়োজন পড়ে না।
 
-**Answer:**
-No, a variadic function in Go accepts only one type of argument. However, you can work around this limitation by using an `interface{}` type, which allows for any type, but you will lose type safety.
+---
 
-**Code Example**:
+### ২. Variadic function কি একাধিক টাইপের আর্গুমেন্ট নিতে পারে?
+
+**উত্তর:**
+না, Go তে Variadic function একটাই টাইপ গ্রহণ করে। তবে `interface{}` ব্যবহার করলে বিভিন্ন ধরনের ডেটা নেয়া যায়, কিন্তু টাইপ সেফটি হারায়।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -84,21 +98,25 @@ func printAnything(values ...interface{}) {
 }
 
 func main() {
-	printAnything(1, "Hello", 3.14, true) // Accepting multiple types
+	printAnything(1, "Hello", 3.14, true) // একাধিক টাইপ গ্রহণ
 }
 ```
 
-#### 3. Can you have multiple variadic parameters in a function?
+---
 
-**Answer:**
-No, Go only allows one variadic parameter in a function. You cannot have more than one variadic parameter in the function signature.
+### ৩. একটি ফাংশনে একাধিক Variadic প্যারামিটার রাখা যাবে?
 
-#### 4. How do you handle a variadic function when no arguments are passed?
+**উত্তর:**
+না, Go তে একাধিক Variadic প্যারামিটার রাখা যায় না। শুধুমাত্র একটি Variadic প্যারামিটার থাকতে পারে।
 
-**Answer:**
-If no arguments are passed to a variadic function, the parameter inside the function will be an empty slice. This allows the function to still handle the case where no arguments are provided gracefully.
+---
 
-**Code Example**:
+### ৪. যদি Variadic ফাংশনে কোন আর্গুমেন্ট না দেওয়া হয়, তখন কী হয়?
+
+**উত্তর:**
+প্যারামিটার হিসেবে ফাংশনের ভিতরে একটি খালি slice তৈরি হয়। তাই ফাংশন তখনো কাজ করবে।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -114,16 +132,18 @@ func print(numbers ...int) {
 }
 
 func main() {
-	print() // No arguments provided
+	print() // কোন আর্গুমেন্ট নেই
 }
 ```
 
-#### 5. Can you pass a slice to a variadic function?
+---
 
-**Answer:**
-Yes, you can pass a slice to a variadic function by using the `...` syntax to unpack the slice.
+### ৫. Slice কি Variadic ফাংশনে পাঠানো যাবে?
 
-**Code Example**:
+**উত্তর:**
+হ্যাঁ, slice কে `...` ব্যবহার করে unpack করে পাঠানো যায়।
+
+**উদাহরণ:**
 
 ```go
 package main
@@ -136,8 +156,8 @@ func print(numbers ...int) {
 
 func main() {
 	nums := []int{10, 20, 30}
-	print(nums...) // Passing a slice to a variadic function
+	print(nums...) // slice unpack করে পাঠানো
 }
 ```
 
-This method unpacks the slice `nums` and passes its elements individually to the `print` function.
+

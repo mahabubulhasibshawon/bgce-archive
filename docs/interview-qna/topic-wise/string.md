@@ -1,43 +1,43 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-19
 **Category:** interview-qa/strings
 **Tags:** [go, strings, operations]]
 
 # GoLang Strings
 
-This document provides an overview of string operations in GoLang with examples.
+এই ডকুমেন্টে GoLang-এ string অপারেশনগুলো নিয়ে উদাহরণসহ আলোচনা করা হয়েছে।
 
-## Frequently Asked Questions
+## প্রায় জিজ্ঞাসিত প্রশ্নোত্তর
 
-### 1. How do you concatenate strings in Go?
+### ১. Go-তে কীভাবে স্ট্রিং যুক্ত (concatenate) করবেন?
 
-You can concatenate strings using the `+` operator.
+আপনি `+` অপারেটর ব্যবহার করে স্ট্রিং যুক্ত করতে পারেন।
 
 ```go
 fmt.Println("Hello, " + "World!")
 ```
 
-### 2. How do you find the length of a string in Go?
+### ২. Go-তে স্ট্রিং-এর দৈর্ঘ্য কীভাবে জানবেন?
 
-Use the `len` function to get the length of a string.
+`len` ফাংশন ব্যবহার করে string-এর দৈর্ঘ্য পেতে পারেন।
 
 ```go
 message := "Hello World!"
 fmt.Println("Length:", len(message))
 ```
 
-### 3. How do you extract a substring in Go?
+### ৩. Go-তে কীভাবে একটি substring বের করবেন?
 
-Use slice notation to extract substrings.
+slice notation ব্যবহার করে substring extract করা যায়।
 
 ```go
 message := "Hello World!"
 fmt.Println("Substring:", message[0:5]) // "Hello"
 ```
 
-### 4. How do you compare two strings in Go?
+### ৪. Go-তে দুটি স্ট্রিং কীভাবে তুলনা করবেন?
 
-You can use `==` and `!=` operators or the `strings.Compare` function.
+`==` ও `!=` অপারেটর বা `strings.Compare` ফাংশন ব্যবহার করতে পারেন।
 
 ```go
 msg1 := "one"
@@ -47,18 +47,18 @@ fmt.Println("Not Equal?", msg1 != msg2)
 fmt.Println(strings.Compare(msg1, msg2))
 ```
 
-### 5. How do you check if a string contains a substring?
+### ৫. Go-তে কিভাবে চেক করবেন কোনো স্ট্রিং-এর মধ্যে নির্দিষ্ট substring আছে কিনা?
 
-Use the `strings.Contains` function.
+`strings.Contains` ফাংশন ব্যবহার করুন।
 
 ```go
 message := "Hello World!"
 fmt.Println(strings.Contains(message, "World")) // true
 ```
 
-### 6. How do you convert a string to uppercase or lowercase?
+### ৬. Go-তে স্ট্রিং কীভাবে uppercase বা lowercase করবেন?
 
-Use `strings.ToUpper` and `strings.ToLower` functions.
+`strings.ToUpper` ও `strings.ToLower` ফাংশন ব্যবহার করুন।
 
 ```go
 message := "Hello World!"
@@ -66,47 +66,49 @@ fmt.Println(strings.ToUpper(message)) // "HELLO WORLD!"
 fmt.Println(strings.ToLower(message)) // "hello world!"
 ```
 
-### 7. How do you split a string into substrings?
+### ৭. Go-তে কীভাবে একটি স্ট্রিংকে ভাগ করবেন (split) multiple substring-এ?
 
-Use the `strings.Split` function.
+`strings.Split` ফাংশন ব্যবহার করুন।
 
 ```go
 message := "Hello World!"
 fmt.Println(strings.Split(message, " ")) // ["Hello", "World!"]
 ```
 
-### 8. How do you replace a substring in a string?
+### ৮. Go-তে কীভাবে স্ট্রিং-এর substring replace করবেন?
 
-Use the `strings.Replace` function.
+`strings.Replace` ফাংশন ব্যবহার করুন।
 
 ```go
 message := "Hello World!"
 fmt.Println(strings.Replace(message, "World", "Go", 1)) // "Hello Go!"
 ```
 
-### 9. How do you trim spaces from a string?
+### ৯. Go-তে কীভাবে স্ট্রিং থেকে leading ও trailing spaces সরাবেন?
 
-Use the `strings.TrimSpace` function.
+`strings.TrimSpace` ফাংশন ব্যবহার করুন।
 
 ```go
 message := "  Hello World!  "
 fmt.Println(strings.TrimSpace(message)) // "Hello World!"
 ```
 
-### 10. How do you get the first character of a string?
+### ১০. Go-তে একটি স্ট্রিং এর প্রথম ক্যারেক্টার কীভাবে পাবেন?
 
-Use indexing to access the first character.
+index ব্যবহার করে স্ট্রিং-এর প্রথম ক্যারেক্টার অ্যাক্সেস করুন।
 
 ```go
 message := "Hello World!"
 fmt.Printf("First character: %c\n", message[0])
 ```
 
-## Basic String Operations
+---
+
+## মৌলিক String অপারেশন
 
 ### Concatenation
 
-You can concatenate strings using the `+` operator.
+আপনি `+` অপারেটর দিয়ে স্ট্রিং যোগ করতে পারেন।
 
 ```go
 fmt.Println("Hello, " + "World!")
@@ -114,7 +116,7 @@ fmt.Println("Hello, " + "World!")
 
 ### Formatting Strings
 
-Go provides several ways to format strings using `fmt.Printf`.
+Go-তে বিভিন্নভাবে string format করা যায় `fmt.Printf` ব্যবহার করে।
 
 ```go
 message := "Hello World!"
@@ -128,7 +130,7 @@ fmt.Printf("First character: %c\n", message[0])
 
 ### String Length
 
-You can get the length of a string using the `len` function.
+`len` ফাংশন ব্যবহার করে string-এর দৈর্ঘ্য জানতে পারেন।
 
 ```go
 fmt.Println("Length:", len(message))
@@ -136,15 +138,15 @@ fmt.Println("Length:", len(message))
 
 ### Substrings
 
-You can extract substrings using slice notation.
+slice notation ব্যবহার করে substring বের করুন।
 
 ```go
-fmt.Println("Substring:", message[0:5]) // this will print "Hello"
+fmt.Println("Substring:", message[0:5]) // এটি "Hello" প্রিন্ট করবে
 ```
 
 ### String Comparison
 
-You can compare strings using `==` and `!=` operators or the `strings.Compare` function.
+`==`, `!=` অপারেটর বা `strings.Compare` ফাংশন ব্যবহার করে স্ট্রিং তুলনা করুন।
 
 ```go
 msg1 := "one"
@@ -155,19 +157,21 @@ fmt.Println("Not Equal?", msg1 != msg2)
 fmt.Println(strings.Compare(msg1, msg2))
 ```
 
-## Additional String Functions
+---
+
+## অতিরিক্ত String ফাংশন
 
 ### Contains
 
-Check if a string contains a substring.
+স্ট্রিং-এর মধ্যে নির্দিষ্ট substring আছে কিনা চেক করুন।
 
 ```go
 fmt.Println(strings.Contains(message, "World")) // true
 ```
 
-### ToUpper and ToLower
+### ToUpper ও ToLower
 
-Convert strings to upper or lower case.
+স্ট্রিং uppercase বা lowercase-এ রূপান্তর করুন।
 
 ```go
 fmt.Println(strings.ToUpper(message)) // "HELLO WORLD!"
@@ -176,7 +180,7 @@ fmt.Println(strings.ToLower(message)) // "hello world!"
 
 ### Split
 
-Split a string into a slice of substrings.
+স্ট্রিংকে substring-এর slice-এ ভাগ করুন।
 
 ```go
 fmt.Println(strings.Split(message, " ")) // ["Hello", "World!"]
@@ -184,7 +188,7 @@ fmt.Println(strings.Split(message, " ")) // ["Hello", "World!"]
 
 ### Replace
 
-Replace occurrences of a substring.
+Substring প্রতিস্থাপন করুন।
 
 ```go
 fmt.Println(strings.Replace(message, "World", "Go", 1)) // "Hello Go!"
@@ -192,10 +196,12 @@ fmt.Println(strings.Replace(message, "World", "Go", 1)) // "Hello Go!"
 
 ### Trim
 
-Trim leading and trailing spaces.
+leading ও trailing spaces সরান।
 
 ```go
 fmt.Println(strings.TrimSpace("  Hello World!  ")) // "Hello World!"
 ```
 
-Refer to the [Go documentation](https://golang.org/pkg/strings/) for more string functions and detailed usage.
+---
+
+যদি আরো string ফাংশন বা বিস্তারিত দরকার হয়, তবে আপনি [Go documentation](https://golang.org/pkg/strings/) দেখতে পারেন

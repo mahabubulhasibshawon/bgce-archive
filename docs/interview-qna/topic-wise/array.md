@@ -1,50 +1,50 @@
-[**Author:** @mdimamhosen
+[**Author:** @mdimamhosen, @mahabubulhasibshawon
 **Date:** 2025-04-19
 **Category:** interview-qa/arrays
 **Tags:** [go, arrays, functions]
 ]
 
-# Arrays in Go
+# Go তে Array
 
-## Declaring Arrays
+## Array ঘোষণা করা
 
-You can declare an array in Go using the following syntax:
+Go-তে নিচের সিনট্যাক্স ব্যবহার করে array ঘোষণা করা যায়:
 
 ```go
 var arrayName [size]elementType
 ```
 
-Example:
+উদাহরণ:
 
 ```go
 var numbers [5]int
 ```
 
-## Initializing Arrays
+## Arrays  ইনিশিয়ালাইজ করা
 
-Arrays can be initialized at the time of declaration:
+Array ডিক্লেয়ার করার সময় Array ইনিশিয়ালাইজ করা যেতে পারে:
 
 ```go
 var numbers = [5]int{1, 2, 3, 4, 5}
 ```
 
-Or you can use the shorthand notation:
+অথবা শর্টহ্যান্ড নোটেশন ব্যবহার করতে পারেন:
 
 ```go
 numbers := [5]int{1, 2, 3, 4, 5}
 ```
 
-## Accessing Array Elements
+## Array উপাদানে অ্যাক্সেস করা
 
-Array elements are accessed using the index, which starts from 0:
+Array এর উপাদানগুলো ইনডেক্স ব্যবহার করে অ্যাক্সেস করা যায়, যেটি 0 থেকে শুরু হয়:
 
 ```go
 fmt.Println(numbers[0]) // Output: 1
 ```
 
-## Iterating Over Arrays
+## Array তে লুপ চালানো
 
-You can iterate over arrays using a `for` loop:
+`for` লুপ ব্যবহার করে অ্যারের উপর লুপ চালানো যায়:
 
 ```go
 for i := 0; i < len(numbers); i++ {
@@ -52,7 +52,7 @@ for i := 0; i < len(numbers); i++ {
 }
 ```
 
-Or using the `range` keyword:
+অথবা `range` কীওয়ার্ড ব্যবহার করতে পারেন:
 
 ```go
 for index, value := range numbers {
@@ -62,13 +62,13 @@ for index, value := range numbers {
 
 ## Multidimensional Arrays
 
-Go supports multidimensional arrays. A two-dimensional array is declared as follows:
+Go মাল্টিডাইমেনশনাল অ্যারে সাপোর্ট করে। একটি টু-ডাইমেনশনাল অ্যারে নিচেরভাবে ঘোষণা করা হয়:
 
 ```go
 var matrix [3][3]int
 ```
 
-Example:
+উদাহরণ:
 
 ```go
 matrix := [3][3]int{
@@ -78,26 +78,24 @@ matrix := [3][3]int{
 }
 ```
 
-## Array of Arrays
+## অ্যারে অব অ্যারেস (Array of Arrays)
 
-You can also create an array of arrays:
+অ্যারে অব অ্যারেস (array of arrays) হলো এমন একটি ডেটা স্ট্রাকচার, যেখানে একটি অ্যারের প্রতিটি উপাদান আরেকটি অ্যারে বা স্লাইস। এটি সাধারণত ভ্যারিয়েবল সাইজের 2D ডেটা রাখার জন্য ব্যবহৃত হয়, যেমন প্রতিটি সারিতে ভিন্ন ভিন্ন উপাদান থাকতে পারে।
 
-```go
-var arrayOfArrays [2][3]int
-```
 
-Example:
+উদাহরণ:
 
 ```go
-arrayOfArrays := [2][3]int{
-    {1, 2, 3},
-    {4, 5, 6},
+arrayOfArrays := [][]int{
+    {1, 2},
+    {3, 4, 5},
+    {6},
 }
 ```
 
-## Passing Arrays to Functions
+## ফাংশনে Arrays পাঠানো
 
-Arrays can be passed to functions by value, meaning the function receives a copy of the array:
+Go-তে অ্যারে ফাংশনে পাঠানো হয় ভ্যালু হিসেবে, অর্থাৎ ফাংশনটি অ্যারের একটি কপি পায়:
 
 ```go
 func printArray(arr [5]int) {
@@ -107,7 +105,7 @@ func printArray(arr [5]int) {
 }
 ```
 
-To modify the original array, you can pass a pointer to the array:
+মূল অ্যারে পরিবর্তন করতে হলে, আপনাকে অ্যারের পয়েন্টার পাঠাতে হবে:
 
 ```go
 func modifyArray(arr *[5]int) {
@@ -117,11 +115,11 @@ func modifyArray(arr *[5]int) {
 
 ## Frequently Asked Questions
 
-### Q1: How can I find the length of an array in Go?
+### Q1: Go-তে কিভাবে অ্যারের দৈর্ঘ্য নির্ধারণ করব?
 
-You can use the built-in `len()` function to find the length of an array.
+অ্যারের দৈর্ঘ্য নির্ধারণ করতে len() বিল্ট-ইন ফাংশন ব্যবহার করুন।
 
-Example:
+উদাহরণ:
 
 ```go
 package main
@@ -134,11 +132,11 @@ func main() {
 }
 ```
 
-### Q2: How do I copy an array in Go?
+### Q2: Go-তে কিভাবে একটি অ্যারে কপি করব?
 
-In Go, you can copy an array by simply assigning it to another array of the same type and size.
+Go-তে অ্যারে কপি করার জন্য আপনি সেটিকে একই টাইপ এবং সাইজের অন্য অ্যারেতে অ্যাসাইন করতে পারেন।
 
-Example:
+উদাহরণ:
 
 ```go
 package main
@@ -153,11 +151,11 @@ func main() {
 }
 ```
 
-### Q3: How can I pass an array to a function without copying it?
+### Q3: কিভাবে কপি না করে ফাংশনে array পাঠিয়ে সেটিকে পরিবর্তন করা যায়?
 
-To avoid copying, you can pass a pointer to the array.
+কপি না করে পরিবর্তন করতে চাইলে অ্যারের পয়েন্টার পাঠান।
 
-Example:
+উদাহরণ:
 
 ```go
 package main
@@ -175,7 +173,7 @@ func main() {
 }
 ```
 
-### Example code to test: main.go
+### test করার জন্য উদাহরণ: main.go
 
 ```go
 package main
