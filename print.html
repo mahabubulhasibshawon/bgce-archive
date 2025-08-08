@@ -971,8 +971,8 @@ func main() {
 <tr><td>int8</td><td>8-bit</td><td>-128 to 127</td></tr>
 <tr><td>int16</td><td>16-bit</td><td>-32,768 to 32,767</td></tr>
 <tr><td>int32</td><td>32-bit</td><td>-2,147,483,648 to 2,147,483,647</td></tr>
-<tr><td>int64</td><td>64-bit</td><td>খুব বড় পূর্ণসংখ্যা</td></tr>
-<tr><td>uint</td><td>unsigned int</td><td>ধনাত্মক পূর্ণসংখ্যা</td></tr>
+<tr><td>int64</td><td>64-bit</td><td>-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807</td></tr>
+<tr><td>uint</td><td>unsigned int</td><td>0 to 4,294,967,295</td></tr>
 <tr><td>uint8</td><td>0 to 255</td><td>Unsigned 8-bit integer</td></tr>
 <tr><td>uint16</td><td>0 to 65535</td><td>Unsigned 16-bit integer</td></tr>
 <tr><td>uint32</td><td>0 to 4 billion+</td><td>Unsigned 32-bit</td></tr>
@@ -2846,7 +2846,7 @@ func init() {
 <h2 id="-ভিজযুযালাইজেশন"><a class="header" href="#-ভিজযুযালাইজেশন">🧠 ভিজ্যুয়ালাইজেশন</a></h2>
 <h3 id="cli-সটাইল-মেমোরি-বিনযাস"><a class="header" href="#cli-সটাইল-মেমোরি-বিনযাস">CLI-স্টাইল মেমোরি বিন্যাস</a></h3>
 <pre><code>┌─────────────────────────────┐
-│       কোড সেগমেন্ট         │
+│       কোড সেগমেন্ট           │
 │-----------------------------│
 │ const a = 10,               |
 | main, call, init, outer,    │
@@ -2854,13 +2854,13 @@ func init() {
 └─────────────────────────────┘
           ↓
 ┌─────────────────────────────┐
-│        ডেটা সেগমেন্ট            │
+│        ডেটা সেগমেন্ট          │
 │-----------------------------│
 │ var p = 100                 │
 └─────────────────────────────┘
           ↓
 ┌─────────────────────────────┐
-│            স্ট্যাক              │
+│            স্ট্যাক             │
 │-----------------------------│
 │ outer() frame               │
 │   age = 30                  │
@@ -2868,7 +2868,7 @@ func init() {
 └─────────────────────────────┘
           ↓
 ┌─────────────────────────────┐
-│            হিপ             │
+│            হিপ              │
 │-----------------------------│
 │ money = 100 (for incr1)     │
 │ money = 100 (for incr2)     │
@@ -4896,7 +4896,7 @@ Deferred: 1
 </code></pre>
 <p>📌 প্রতিবার loop এ <code>defer</code> নতুন করে register হয়। তাই stack অনুযায়ী উল্টোভাবে execute হয়।</p>
 <hr />
-<h4 id="-variable-capture-trap-closure"><a class="header" href="#-variable-capture-trap-closure">📛 Variable Capture Trap (Closure)</a></h4>
+<h4 id="-defer-behaviour-for-closures"><a class="header" href="#-defer-behaviour-for-closures">🔒 <code>Defer</code> behaviour for closures</a></h4>
 <pre><code class="language-go">func closureDefer() {
     for i := 1; i &lt;= 3; i++ {
         defer func() {
@@ -4906,27 +4906,12 @@ Deferred: 1
 }
 </code></pre>
 <p>🖨️ Output:</p>
-<pre><code>Deferred: 4
-Deferred: 4
-Deferred: 4
-</code></pre>
-<p>😵‍💫 কেন?</p>
-<p>কারণ closure-এ <code>i</code> capture হচ্ছে by reference — প্রতিবার একই i এর address!</p>
-<p>👉 Fix:</p>
-<pre><code class="language-go">func fixedClosureDefer() {
-    for i := 1; i &lt;= 3; i++ {
-        val := i
-        defer func() {
-            fmt.Println("Deferred:", val)
-        }()
-    }
-}
-</code></pre>
-<p>🖨️ Output:</p>
 <pre><code>Deferred: 3
 Deferred: 2
 Deferred: 1
 </code></pre>
+<p>😵‍💫 কেন?</p>
+<p>কারণ defer-এর ক্ষেত্রে ফাংশনে ব্যবহৃত ভ্যারিয়েবল গুলো ইমিডিয়েটলি ডিটেক্ট হয় এবং ডেফার স্টাকে সেভাবেই সেভড থাকে</p>
 <hr />
 <h3 id="-practical-use-cases"><a class="header" href="#-practical-use-cases">🛠️ Practical Use Cases</a></h3>
 <ol>
@@ -4969,7 +4954,6 @@ defer mu.Unlock()
 <tr><td>Internal structure</td><td>Linked List with Stack behavior</td></tr>
 <tr><td>Named return</td><td><code>defer</code> can modify it</td></tr>
 <tr><td>Unnamed return</td><td><code>defer</code> can’t modify it</td></tr>
-<tr><td>Variable capture</td><td>Closure captures by reference — careful!</td></tr>
 <tr><td>Use cases</td><td>File close, Mutex unlock, Panic recovery</td></tr>
 </tbody></table>
 </div>
@@ -4989,7 +4973,7 @@ defer mu.Unlock()
 <li>Resource leak রোধ</li>
 <li>কম Bug</li>
 </ul>
-<p>শুধু syntax জানলেই হবে না — এর ভিতরের Stack-মাথা, Return-trap, এবং Variable-capture খেলাও বোঝা জরুরি।</p>
+<p>শুধু syntax জানলেই হবে না — এর ভিতরের Stack-মাথা, Return-trap খেলাও বোঝা জরুরি।</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="-class-41--separate-stack-for-separate-thread"><a class="header" href="#-class-41--separate-stack-for-separate-thread">🧵 Class 41 : Separate Stack For Separate Thread</a></h1>
 <h2 id="-recap"><a class="header" href="#-recap">🔁 Recap</a></h2>
 <ul>
@@ -6609,50 +6593,44 @@ func main() {
 
 
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><p>[<strong>Author:</strong> @mdimamhosen
+<div style="break-before: page; page-break-before: always;"></div><p>[<strong>Author:</strong> @mdimamhosen, @n8fury
 <strong>Date:</strong> 2025-04-19
 <strong>Category:</strong> interview-qa/boolean
 <strong>Tags:</strong> [go, boolean, data-types]
 ]</p>
-<h1 id="a-boolean-data-type-can-either-be-true-or-false"><a class="header" href="#a-boolean-data-type-can-either-be-true-or-false">A boolean data-type can either be "TRUE" or "FALSE"</a></h1>
+<h1 id="একটি-boolean-data-type-হয-true-অথবা-false-হতে-পারে"><a class="header" href="#একটি-boolean-data-type-হয-true-অথবা-false-হতে-পারে">একটি boolean data-type হয় "TRUE" অথবা "FALSE" হতে পারে</a></h1>
 <pre><code class="language-go">package main
-
 import "fmt"
-
 func main() {
-	isGolangPL := true
-	isHtmlPL := false
-	fmt.Println(isGolangPL)
-	fmt.Println(isHtmlPL)
+ isGolangPL := true
+ isHtmlPL := false
+ fmt.Println(isGolangPL)
+ fmt.Println(isHtmlPL)
 }
 </code></pre>
 <h2 id="frequently-asked-questions-1"><a class="header" href="#frequently-asked-questions-1">Frequently Asked Questions</a></h2>
-<h3 id="q1-how-can-i-use-boolean-values-in-conditional-statements"><a class="header" href="#q1-how-can-i-use-boolean-values-in-conditional-statements">Q1: How can I use boolean values in conditional statements?</a></h3>
-<p><strong>Answer:</strong> Boolean values are often used in conditional statements to control the flow of a program. For example:</p>
+<h3 id="q1-conditional-statement-এ-boolean-value-কিভাবে-বযবহার-করব"><a class="header" href="#q1-conditional-statement-এ-boolean-value-কিভাবে-বযবহার-করব">Q1: conditional statement এ boolean value কিভাবে ব্যবহার করব?</a></h3>
+<p><strong>উত্তর:</strong> Boolean value সাধারণত conditional statement এ program এর flow control করার জন্য ব্যবহার করা হয়। উদাহরণ:</p>
 <pre><code class="language-go">package main
-
 import "fmt"
-
 func main() {
-	isEven := true
-	if isEven {
-		fmt.Println("The number is even.")
-	} else {
-		fmt.Println("The number is odd.")
-	}
+ isEven := true
+ if isEven {
+  fmt.Println("The number is even.")
+ } else {
+  fmt.Println("The number is odd.")
+ }
 }
 </code></pre>
-<h3 id="q2-can-boolean-values-be-compared-directly"><a class="header" href="#q2-can-boolean-values-be-compared-directly">Q2: Can boolean values be compared directly?</a></h3>
-<p><strong>Answer:</strong> Yes, boolean values can be compared directly using comparison operators. For example:</p>
+<h3 id="q2-boolean-value-গুলো-কি-সরাসরি-compare-করা-যায"><a class="header" href="#q2-boolean-value-গুলো-কি-সরাসরি-compare-করা-যায">Q2: boolean value গুলো কি সরাসরি compare করা যায়?</a></h3>
+<p><strong>উত্তর:</strong> হ্যাঁ, boolean value গুলো comparison operator ব্যবহার করে সরাসরি compare করা যায়। উদাহরণ:</p>
 <pre><code class="language-go">package main
-
 import "fmt"
-
 func main() {
-	isTrue := true
-	isFalse := false
-	fmt.Println(isTrue == isFalse) // Output: false
-	fmt.Println(isTrue != isFalse) // Output: true
+ isTrue := true
+ isFalse := false
+ fmt.Println(isTrue == isFalse) // আউটপুট: false
+ fmt.Println(isTrue != isFalse) // আউটপুট: true
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="callback-functions"><a class="header" href="#callback-functions">Callback Functions</a></h1>
