@@ -5,12 +5,18 @@ import (
 
 	"github.com/spf13/cobra"
 
+	"cortex/apm"
+	"cortex/cache"
 	category "cortex/category"
 	"cortex/config"
 	"cortex/logger"
+	"cortex/rabbitmq"
+	"cortex/repo"
 	"cortex/rest"
 	"cortex/rest/handlers"
 	"cortex/rest/middlewares"
+	"cortex/rest/utils"
+	"cortex/settings"
 )
 
 var serverRestCmd = &cobra.Command{
@@ -22,50 +28,76 @@ var serverRestCmd = &cobra.Command{
 func serveRest(cmd *cobra.Command, args []string) error {
 	cnf := config.GetConfig()
 
-	// apm.InitAPM(*cnf.Apm)
+	apm.InitAPM(*cnf.Apm)
 
-	// utils.InitValidator()
+	utils.InitValidator()
 
-	// logger.SetupLogger(cnf.ServiceName)
+	logger.SetupLogger(cnf.ServiceName)
 
-	// rmq := rabbitmq.NewRMQ(cnf)
-	// defer rmq.Client.Stop()
-	// _ = repo.GetQueryBuilder() // this is the psql that will be passed down to repo
+	rmq := rabbitmq.NewRMQ(cnf)
+	defer rmq.Client.Stop()
 
-	// readCortexDB, err := repo.GetDbConnection(cnf.ReadCortexDB)
-	// if err != nil {
-	// 	slog.Error("Failed to connect to read cortex database:", logger.Extra(map[string]any{
-	// 		"error": err.Error(),
-	// 	}))
-	// 	return err
-	// }
-	// defer repo.CloseDB(readCortexDB)
+	psql := repo.GetQueryBuilder()
 
-	// writeCortexDB, err := repo.GetDbConnection(cnf.WriteCortexDB)
-	// if err != nil {
-	// 	slog.Error("Failed to connect to write cortex database:", logger.Extra(map[string]any{
-	// 		"error": err.Error(),
-	// 	}))
-	// 	return err
-	// }
-	// defer repo.CloseDB(writeCortexDB)
+	readBgceDB, err := repo.GetDbConnection(cnf.ReadBgceDB)
+	if err != nil {
+		slog.Error("Failed to connect to read bgce database:", logger.Extra(map[string]any{
+			"error": err.Error(),
+		}))
+		return err
+	}
+	defer repo.CloseDB(readBgceDB)
 
-	// err = repo.MigrateDB(writeCortexDB, cnf.MigrationSource)
-	// if err != nil {
-	// 	slog.Error("Failed to migrate database:", logger.Extra(map[string]any{
-	// 		"error": err.Error(),
-	// 	}))
-	// 	return err
-	// }
+	writeBgceDB, err := repo.GetDbConnection(cnf.WriteBgceDB)
+	if err != nil {
+		slog.Error("Failed to connect to write bgce database:", logger.Extra(map[string]any{
+			"error": err.Error(),
+		}))
+		return err
+	}
+	defer repo.CloseDB(writeBgceDB)
 
-	cortexSvc := category.NewService(cnf)
+	err = repo.MigrateDB(writeBgceDB, cnf.MigrationSource)
+	if err != nil {
+		slog.Error("Failed to migrate database:", logger.Extra(map[string]any{
+			"error": err.Error(),
+		}))
+		return err
+	}
+
+	readRedisClient, err := cache.NewRedisClient(cnf.ReadRedisURL, cnf.EnableRedisTLSMode)
+	if err != nil {
+		slog.Error("Unable to create redis read client", logger.Extra(map[string]any{
+			"error": err.Error(),
+		}))
+		return err
+	}
+	defer readRedisClient.Close()
+
+	writeRedisClient, err := cache.NewRedisClient(cnf.WriteRedisURL, cnf.EnableRedisTLSMode)
+	if err != nil {
+		slog.Error("Unable to create redis write client", logger.Extra(map[string]any{
+			"error": err.Error(),
+		}))
+		return err
+	}
+	defer writeRedisClient.Close()
+
+	redisCache := cache.NewCache(readRedisClient, writeRedisClient)
+	slog.Info("Redis client is connected.")
+
+	settings := settings.GetSettings(cnf)
+
+	ctgryRepo := repo.NewCtgryRepo(readBgceDB, writeBgceDB, psql)
+
+	ctgrySvc := category.NewService(cnf, rmq, ctgryRepo, redisCache)
 
 	handlers := handlers.NewHandler(
 		cnf,
-		cortexSvc,
+		ctgrySvc,
 	)
 
-	middlewares := middlewares.NewMiddleware(cnf)
+	middlewares := middlewares.NewMiddleware(cnf, redisCache, settings)
 
 	server, err := rest.NewServer(middlewares, cnf, handlers)
 	if err != nil {

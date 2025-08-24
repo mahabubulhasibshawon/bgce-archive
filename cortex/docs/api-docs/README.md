@@ -60,6 +60,7 @@ Manages top-level content classification, such as topic groupings (e.g., "Interv
     "description": "Technical interview questions categorized by difficulty and topic",
     "created_by": 1,
     "approved_by": 2,
+    "updated_by": null,
     "deleted_by": null,
     "created_at": "2025-07-24T10:00:00Z",
     "updated_at": "2025-07-26T12:00:00Z",
@@ -72,7 +73,6 @@ Manages top-level content classification, such as topic groupings (e.g., "Interv
     }
 }
 ```
-````
 
 ---
 
@@ -133,6 +133,7 @@ Defines subcategories under a given parent category — e.g., "Basic Golang Inte
     "maintainer": "@ifrunruhin12",
     "created_by": 1,
     "approved_by": 2,
+    "updated_by": null,
     "deleted_by": null,
     "created_at": "2025-07-24T10:00:00Z",
     "updated_at": "2025-07-26T12:30:00Z",
@@ -204,7 +205,35 @@ Soft-deletes the subcategory.
             "priority": "high",
             "tags": ["tech", "interview"],
             "icon": "🧠"
-        }
+        },
+        "subcategories": [
+            {
+                "uuid": "279d9ec7-d2f4-47dc-a9cf-d58f99c7a4f1",
+                "slug": "basic-interview-qna",
+                "category_id": "8b25c3f6-1e5c-426a-bb89-f8d4a21377c2",
+                "label": "Basic Golang Interview Questions",
+                "maintainer": "@ifrunruhin12",
+                "status": "approved",
+                "meta": {
+                    "difficulty": "beginner",
+                    "language": "golang",
+                    "estimated_read_time": "15min"
+                }
+            },
+            {
+                "uuid": "91c6a0b3-b43f-4b63-96a2-1fcf519e9630",
+                "slug": "advanced-js-qna",
+                "category_id": "8b25c3f6-1e5c-426a-bb89-f8d4a21377c2",
+                "label": "Advanced JavaScript Questions",
+                "maintainer": "@shahrear_dev",
+                "status": "pending",
+                "meta": {
+                    "difficulty": "advanced",
+                    "language": "javascript",
+                    "interviewer_favorite": true
+                }
+            }
+        ]
     },
     {
         "uuid": "ff10b395-5af1-4bcd-a812-d30558e4ecbe",
@@ -216,7 +245,8 @@ Soft-deletes the subcategory.
         "meta": {
             "language": "English",
             "recommended_age": "18+"
-        }
+        },
+        "subcategories": []
     }
 ]
 ```
@@ -230,7 +260,7 @@ Soft-deletes the subcategory.
     {
         "uuid": "279d9ec7-d2f4-47dc-a9cf-d58f99c7a4f1",
         "slug": "basic-interview-qna",
-        "category_id": 1,
+        "category_id": "279d9ec7-d2f4-47dc-a9cf-d58f99c7a4f1",
         "label": "Basic Golang Interview Questions",
         "maintainer": "@ifrunruhin12",
         "status": "approved",
@@ -238,12 +268,24 @@ Soft-deletes the subcategory.
             "difficulty": "beginner",
             "language": "golang",
             "estimated_read_time": "15min"
+        },
+        "category": {
+            "uuid": "279d9ec7-d2f4-47dc-a9cf-d58f99c7a4f1",
+            "slug": "basic-interview-qna",
+            "label": "Basic Golang Interview Questions",
+            "maintainer": "@ifrunruhin12",
+            "status": "approved",
+            "meta": {
+                "difficulty": "beginner",
+                "language": "golang",
+                "estimated_read_time": "15min"
+            }
         }
     },
     {
         "uuid": "91c6a0b3-b43f-4b63-96a2-1fcf519e9630",
         "slug": "advanced-js-qna",
-        "category_id": 1,
+        "category_id": "279d9ec7-d2f4-47dc-a9cf-d58f99c7a4f1",
         "label": "Advanced JavaScript Questions",
         "maintainer": "@shahrear_dev",
         "status": "pending",
@@ -251,6 +293,18 @@ Soft-deletes the subcategory.
             "difficulty": "advanced",
             "language": "javascript",
             "interviewer_favorite": true
+        },
+        "category": {
+            "uuid": "279d9ec7-d2f4-47dc-a9cf-d58f99c7a4f1",
+            "slug": "basic-interview-qna",
+            "label": "Basic Golang Interview Questions",
+            "maintainer": "@ifrunruhin12",
+            "status": "approved",
+            "meta": {
+                "difficulty": "beginner",
+                "language": "golang",
+                "estimated_read_time": "15min"
+            }
         }
     }
 ]
@@ -299,3 +353,4 @@ Example:
 ```
 
 ---
+```

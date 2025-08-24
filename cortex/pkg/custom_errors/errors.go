@@ -2,5 +2,7 @@ package customerrors
 
 import "errors"
 
-var ErrAlreadyExists = errors.New("already-exists")
-var ErrNotFound = errors.New("not-found")
+var (
+	ErrSlugExists = errors.New("category slug already exists")
+	ErrCategoryNotFound = errors.New("category not found")
+)
